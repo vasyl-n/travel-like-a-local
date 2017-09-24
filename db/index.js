@@ -19,4 +19,7 @@ const getAllTransactions = function(callback) {
   };
 };
 
-getAllTransactions();
+exports.connection = connection;
+
+
+//getAllTransactions();
