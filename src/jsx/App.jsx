@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import ajaxHandler from '../../lib/ajaxHandler.js';
 import DestinationInput from './DestinationInput.jsx';
 import AddFriend from './AddFriend.jsx';
+import Nav from "./Nav.jsx";
+
 
 class App extends React.Component {
   constructor() {
@@ -36,8 +38,13 @@ class App extends React.Component {
   render() {
     return(
       <div>
-        <DestinationInput handleInputDest={this.handleInputDest} />
-        <AddFriend userName={this.state.userName} friendList={this.state.friendList} />
+        <Nav  />
+          <h1>
+            SKIP THE TOURIST TRAPS<br />
+            ENJOY A CITY LIKE A LOCAL <br />
+          </h1>
+          <DestinationInput handleInputDest={this.handleInputDest} />
+          <AddFriend userName={this.state.userName} friendList={this.state.friendList} />
       </div>
     );
   }
