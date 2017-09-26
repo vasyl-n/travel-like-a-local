@@ -1,44 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Axios from 'axios';
+import ajaxHandler from '../../lib/ajaxHandler.js';
+import DestinationInput from './DestinationInput.jsx';
 
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {
-      inputDest: ""
-    }
-
-    this.handleDestInputChange = this.handleDestInputChange.bind(this)
-    this.handleInputDestClick = this.handleInputDestClick.bind(this)
+    this.handleInputDest = this.handleInputDest.bind(this);
 
   }
 
-  handleDestInputChange(e){
-    this.setState({
-      inputDest: e.target.value
-    })
-  }
-
-  handleInputDestClick(e){
-    e.preventDefault();
-    Axios.post('http://127.0.0.1:3000/api/destinations/'+ this.state.inputDest)
-    .then(function(response){
+  handleInputDest(destination){
+    ajaxHandler.handlePostDestination(destination, function(response){
       console.log(response);
-    })
+    });
   }
 
 
   render() {
     return(
       <div>
-        <form>
-          <label>
-            Destination:
-            <input type="text" value={this.state.inputDest} onChange={this.handleDestInputChange}/>
-          </label>
-          <input type="submit" value="Submit" onClick={this.handleInputDestClick} />
-        </form>
+        <DestinationInput handleInputDest={this.handleInputDest} />
       </div>
     );
   }
