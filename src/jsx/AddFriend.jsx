@@ -15,8 +15,7 @@ class AddFriend extends React.Component {
 
 
   render() {
-    //console.log(this.props.friendList);
-
+    console.log(this.props.friendList);
 
 
     return(
@@ -26,7 +25,7 @@ class AddFriend extends React.Component {
             Add Friend {this.props.userName}
             <select>
 
-            {this.props.friendList.map((friend)=> <option value={friend.username}>{friend.username}</option>)}
+            {this.props.friendList.map((friend)=> <option value={friend.username} key={friend.id}>{friend.username}</option>)}
 
             </select>
           </label>
