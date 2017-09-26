@@ -19,6 +19,10 @@ app.use(function(req, res, next) {
   next();
 });
 
+
+router.get('/remaining-friends/:username', utilities.getSuggestedFriendsForUser);
+
+
 router.post('/users/newuser', utilities.addNewUser);
 router.post('/destinations/:newdest', utilities.addNewDest);
 
