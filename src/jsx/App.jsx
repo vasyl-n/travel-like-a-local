@@ -4,6 +4,7 @@ import ajaxHandler from '../../lib/ajaxHandler.js';
 import DestinationInput from './DestinationInput.jsx';
 import AddFriend from './AddFriend.jsx';
 import Nav from "./Nav.jsx";
+import SuggestionList from "./SuggestionList.jsx";
 
 
 class App extends React.Component {
@@ -13,7 +14,8 @@ class App extends React.Component {
     this.handleAddFriend = this.handleAddFriend.bind(this);
     this.state = {
       userName: this.props.username,
-      friendList: []
+      friendList: [],
+      suggestionList: []
     }
   }
 
@@ -42,6 +44,12 @@ class App extends React.Component {
     });
   }
 
+  handleSuggestionClick(suggestion) {
+    ajaxHandler.handleAddToPlan(this.state.userName,suggestion, function(response){
+      console.log(response);
+    });
+  }
+
 
   render() {
     console.log(this.state.userName);
@@ -56,6 +64,9 @@ class App extends React.Component {
           <div>
             <DestinationInput handleInputDest={this.handleInputDest} />
             <AddFriend userName={this.state.userName} friendList={this.state.friendList} handleAddFriend={this.handleAddFriend}/>
+            <SuggestionList
+              suggestions={this.state.suggestionList} handleSuggestionClick={this.handleSuggestionClick.bind(this)}
+            />
           </div>
           }
       </div>
