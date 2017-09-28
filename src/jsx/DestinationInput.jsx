@@ -6,10 +6,8 @@ class DestinationInput extends React.Component {
     this.state = {
       inputDest: ""
     }
-
     this.handleDestInputChange = this.handleDestInputChange.bind(this)
     this.handleInputDestClick = this.handleInputDestClick.bind(this)
-
   }
 
   handleDestInputChange(e){

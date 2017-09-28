@@ -4,7 +4,7 @@ var path = require('path');
 module.exports = {
   context: path.join(__dirname, "src"),
   devtool: "inline-sourcemap",
-  entry: "./jsx/App.jsx",
+  entry: "./App.js",
   module: {
     loaders: [
       {
@@ -21,5 +21,11 @@ module.exports = {
   output: {
     path: __dirname + "/public/",
     filename: "app.min.js"
+  },
+   externals: {
+    fs: '{}',
+    tls: '{}',
+    net: '{}',
+    console: '{}'
   }
 };
