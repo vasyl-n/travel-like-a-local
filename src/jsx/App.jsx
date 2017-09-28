@@ -5,7 +5,7 @@ import DestinationInput from './DestinationInput.jsx';
 import AddFriend from './AddFriend.jsx';
 import Nav from "./Nav.jsx";
 import SuggestionList from "./SuggestionList.jsx";
-
+import SearchInput from "./SearchInput.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -33,6 +33,11 @@ class App extends React.Component {
     });
   }
 
+  handleSearchDest(destination) {
+    ajaxHandler.handleGetDestination(destination, function(response){
+      console.log(response);
+    });
+  }
   handleAddFriend(friend) {
     var that = this;
     ajaxHandler.handleAddFriend(this.state.userName, friend, function(){
@@ -56,10 +61,9 @@ class App extends React.Component {
     return(
       <div>
         <Nav userName={this.state.userName}/>
-          <h1>
-            SKIP THE TOURIST TRAPS<br />
-            ENJOY A CITY LIKE A LOCAL <br />
-          </h1>
+         <div>
+            <SearchInput handleSearchDest={this.handleSearchDest} />
+          </div>
           {this.state.userName !== 'not logged in' &&
           <div>
             <DestinationInput handleInputDest={this.handleInputDest} />
