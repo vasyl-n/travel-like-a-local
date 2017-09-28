@@ -7,16 +7,15 @@ import Nav from "./Nav.jsx";
 
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.handleInputDest = this.handleInputDest.bind(this);
+    this.handleAddFriend = this.handleAddFriend.bind(this);
     this.state = {
-      userName: 'Adam',
+      userName: this.props.username,
       friendList: []
     }
-
   }
-
 
   componentDidMount(){
     ajaxHandler.getRemainingFriends(this.state.userName, function(response){
@@ -26,30 +25,42 @@ class App extends React.Component {
     }.bind(this));
   }
 
-
-
   handleInputDest(destination){
     ajaxHandler.handlePostDestination(destination, function(response){
       console.log(response);
     });
   }
 
+  handleAddFriend(friend) {
+    var that = this;
+    ajaxHandler.handleAddFriend(this.state.userName, friend, function(){
+      ajaxHandler.getRemainingFriends(that.state.userName, function(response){
+        that.setState({
+          friendList: response.data
+        });
+      });
+    });
+  }
+
 
   render() {
+    console.log(this.state.userName);
     return(
       <div>
-        <Nav  />
+        <Nav userName={this.state.userName}/>
           <h1>
             SKIP THE TOURIST TRAPS<br />
             ENJOY A CITY LIKE A LOCAL <br />
           </h1>
-          <DestinationInput handleInputDest={this.handleInputDest} />
-          <AddFriend userName={this.state.userName} friendList={this.state.friendList} />
+          {this.state.userName !== 'not logged in' &&
+          <div>
+            <DestinationInput handleInputDest={this.handleInputDest} />
+            <AddFriend userName={this.state.userName} friendList={this.state.friendList} handleAddFriend={this.handleAddFriend}/>
+          </div>
+          }
       </div>
     );
   }
 }
 
-const app = document.getElementById('app');
-
-ReactDOM.render(<App/>, app);
+export default App;
