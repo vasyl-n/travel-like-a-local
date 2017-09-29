@@ -9,6 +9,7 @@ var Nav = (props) => {
           <img />
         </div>
           <div className="login-signup">
+            {props.userName !== 'not logged in' &&<span>Hello {props.userName}!     </span>}
             {props.userName === 'not logged in' && <a href="login">Login</a>}
             {props.userName !== 'not logged in' &&<a href="logout">Logout</a>}
             {props.userName === 'not logged in' &&<a href="signup">Sign Up</a>}
