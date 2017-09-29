@@ -16,7 +16,7 @@ class SuggestionListEntry extends React.Component {
     return (
       <div className="suggestion-list-entry">
         <div className="suggestion-list-entry-title">
-        <a href="#">{this.props.suggestion.suggestionName}</a> FROM {this.props.suggestion.suggestionSource}
+        <a href={this.props.suggestion.suggestionLink} target="_blank">{this.props.suggestion.suggestionName}</a> FROM {this.props.suggestion.suggestionSource}
         </div>
       </div>
     );
