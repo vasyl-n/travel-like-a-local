@@ -65,13 +65,17 @@ class App extends React.Component {
       var source = 'Google';
       var suggestionList = [];
       ajaxHandler.getPlacesFromGoogleMaps(location, function(suggestions){
-        for (var i = 1; i < suggestions.length; i++) {
-          var link = suggestions[i].photos[0].html_attributions[0].match(/href="(.*?")/g);
-          link = link[0].slice(6).slice(0,-1);
-          suggestionList.push({suggestionName:suggestions[i].name, suggestionSource:source, suggestionLink:link});
+        for (var i = 0; i < suggestions.length; i++) {
+          if (suggestions[i].photos !== undefined) {
+            var link = suggestions[i].photos[0].html_attributions[0].match(/href="(.*?")/g);
+            link = link[0].slice(6).slice(0,-1);
+            suggestionList.push({suggestionName:suggestions[i].name, suggestionSource:source, suggestionLink:link, target:'_blank'});
+          } else {
+            suggestionList.push({suggestionName:suggestions[i].name, suggestionSource:source, suggestionLink:'#', target:''});
+          }
         }
         this.setState({suggestionList:suggestionList});
-        console.log(suggestionList);
+        //console.log(suggestionList);
       }.bind(this));
     }
     // case when user is logged in
