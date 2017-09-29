@@ -4,6 +4,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var utilities = require('./lib/util.js');
 var path = require('path');
+var http = require('http');
 
 
 var app = express();
@@ -68,7 +69,9 @@ apiRouter.post('/destinations/:newdest', utilities.addNewDest);
 apiRouter.post('/addfriend', utilities.addNewFriend);
 app.use('/api', apiRouter);
 
-app.listen(3000, function(){
+var server = http.createServer(app);
+
+server.listen(3000, function(){
   console.log("listening on 3000");
 });
 

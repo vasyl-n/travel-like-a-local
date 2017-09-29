@@ -26,6 +26,7 @@
     "ejs": "^2.5.7",
     "express": "^4.15.4",
     "express-session": "^1.15.6",
+    "http": "0.0.0",
     "mysql": "^2.14.1",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
