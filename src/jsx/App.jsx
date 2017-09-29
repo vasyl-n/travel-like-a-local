@@ -78,7 +78,32 @@ class App extends React.Component {
         //console.log(suggestionList);
       }.bind(this));
     }
+
     // case when user is logged in
+    if (this.state.userName !== 'not logged in') {
+      var source = 'Google';
+      var suggestionList = [];
+      var that = this;
+      ajaxHandler.getPlacesFromGoogleMaps(location, function(suggestions){
+        for (var i = 0; i < suggestions.length; i++) {
+          if (suggestions[i].photos !== undefined) {
+            var link = suggestions[i].photos[0].html_attributions[0].match(/href="(.*?")/g);
+            link = link[0].slice(6).slice(0,-1);
+            suggestionList.push({suggestionName:suggestions[i].name, suggestionSource:source, suggestionLink:link, target:'_blank'});
+          } else {
+            suggestionList.push({suggestionName:suggestions[i].name, suggestionSource:source, suggestionLink:'#', target:''});
+          }
+        }
+        ajaxHandler.getSuggestionsForLoggedUsers(that.state.userName, location, function(suggestions){
+          if (suggestions.length > 0) {
+            for (var i = 0; i < suggestions.length; i++) {
+              suggestionList.unshift({suggestionName:suggestions[i].suggestionName, suggestionSource:suggestions[i].friendName, suggestionLink:suggestions[i].photoLink, target:'_blank'});
+            }
+          }
+          that.setState({suggestionList:suggestionList});
+        });
+      });
+    }
   }
 
   handleSuggestionClick(suggestion) {

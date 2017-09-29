@@ -62,6 +62,7 @@ var apiRouter = express.Router();
 apiRouter.get('/remaining-friends/:username', utilities.getSuggestedFriendsForUser);
 apiRouter.get('/friendlist/:username', utilities.getFriendListForUser);
 apiRouter.get('/googlemaps/:location', utilities.getPlacesFromGoogleMapsProxy);
+apiRouter.get('/suggestions/:location/:username', utilities.getSuggestionsFromFriends);
 apiRouter.post('/users/newuser', utilities.addNewUser);
 apiRouter.post('/destinations/:newdest', utilities.addNewDest);
 apiRouter.post('/addfriend', utilities.addNewFriend);
