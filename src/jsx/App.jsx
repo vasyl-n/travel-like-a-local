@@ -44,12 +44,6 @@ class App extends React.Component {
     });
   }
 
-  handleSearchDest(destination) {
-    ajaxHandler.handleGetDestination(destination, function(response){
-      console.log(response);
-    });
-  }
-
   handleAddFriend(friend, friendList) {
     var that = this;
     ajaxHandler.handleAddFriend(this.state.userName, friend, function(){
@@ -74,7 +68,7 @@ class App extends React.Component {
         for (var i = 1; i < suggestions.length; i++) {
           suggestionList.push({suggestionName:suggestions[i].name, suggestionSource:source});
         }
-        this.setState(suggestionList:suggestionList);
+        this.setState({suggestionList:suggestionList});
         console.log(suggestionList);
       }.bind(this));
     }
