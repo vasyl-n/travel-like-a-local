@@ -66,7 +66,9 @@ class App extends React.Component {
       var suggestionList = [];
       ajaxHandler.getPlacesFromGoogleMaps(location, function(suggestions){
         for (var i = 1; i < suggestions.length; i++) {
-          suggestionList.push({suggestionName:suggestions[i].name, suggestionSource:source});
+          var link = suggestions[i].photos[0].html_attributions[0].match(/href="(.*?")/g);
+          link = link[0].slice(6).slice(0,-1);
+          suggestionList.push({suggestionName:suggestions[i].name, suggestionSource:source, suggestionLink:link});
         }
         this.setState({suggestionList:suggestionList});
         console.log(suggestionList);
