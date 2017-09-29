@@ -18,18 +18,20 @@ class AddFriend extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({friendOption: nextProps.friendList[0].username});
+    if (nextProps.friendsToAdd[0]) {
+      this.setState({friendOption: nextProps.friendsToAdd[0].username});
+    }
   }
 
   render() {
-    console.log(this.props.friendList);
+    //console.log(this.props.friendsToAdd);
     return(
       <div>
         <form>
           <label>
-            Add Friend {this.props.userName}
+            <p>Add Friend</p>
             <select onChange={this.friendOptionChange} value={this.state.friendOption}>
-            {this.props.friendList.map((friend)=> <option value={friend.username} key={friend.id}>{friend.username}</option>)}
+            {this.props.friendsToAdd.map((friend)=> <option value={friend.username} key={friend.id}>{friend.username}</option>)}
             </select>
           </label>
           <input type="submit" value="Submit" onClick={this.handleAddFriendClick} />

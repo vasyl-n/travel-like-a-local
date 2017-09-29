@@ -27,8 +27,7 @@ class DestinationInput extends React.Component {
       <div>
         <form>
           <label>
-            Add Destination:
-            <input type="text" value={this.state.inputDest} onChange={this.handleDestInputChange}/>
+            <input placeholder="Add Destination" type="text" value={this.state.inputDest} onChange={this.handleDestInputChange}/>
           </label>
           <input type="submit" value="Submit" onClick={this.handleInputDestClick} />
         </form>

@@ -8,6 +8,7 @@
     "dev": "./node_modules/.bin/webpack-dev-server --content-base src --inline --hot"
   },
   "dependencies": {
+    "@google/maps": "^0.4.3",
     "axios": "^0.16.2",
     "babel-core": "^6.17.0",
     "babel-loader": "^6.2.0",
@@ -29,7 +30,8 @@
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "xmldom": "^0.1.27"
   },
   "repository": {
     "type": "git",

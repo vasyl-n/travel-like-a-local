@@ -10,15 +10,15 @@ class SuggestionList extends React.Component {
 
 
   render() {
+    console.log(this.props);
     return (
       <div className="suggestion-list media">
-        <div className="suggestion-list-head">Suggestions:</div>
+        <div className="suggestion-list-head"></div>
         {
-          this.props.suggestions.map((suggestion, i) =>
+          this.props.suggestionList.map((suggestion) =>
             <SuggestionListEntry
               suggestion={suggestion}
-              handleSuggestionClick = {this.props.handleSuggestionClick}
-              key={i}
+              key={suggestion.suggestionName}
             />
           )
         }

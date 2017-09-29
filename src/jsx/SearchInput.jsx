@@ -4,7 +4,7 @@ class SearchInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputSearchDest : ""
+      inputSearchDest : ''
     }
     this.handleDestInputSearch = this.handleDestInputSearch.bind(this)
     this.handleSearchDestSubmit = this.handleSearchDestSubmit.bind(this)
@@ -31,7 +31,7 @@ class SearchInput extends React.Component {
               SKIP THE TOURIST TRAPS<br />
               ENJOY A CITY LIKE A LOCAL <br />
             </h1>
-            <input type="text" value={this.state.inputSearchDest} onChange={this.handleDestInputSearch}/>
+            <input placeholder="Input your destination!" type="text" value={this.state.inputSearchDest} onChange={this.handleDestInputSearch}/>
           </label>
           <input type="submit" value="Submit" onClick={this.handleSearchDestSubmit} />
         </form>
