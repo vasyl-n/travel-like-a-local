@@ -8,11 +8,11 @@ class SuggestionListEntry extends React.Component {
 
   render() {
     return (
-      <div className="suggestion-list-entry">
+      <li className="suggestion-list-entry">
         <div className="suggestion-list-entry-title">
-        <a href={this.props.suggestion.suggestionLink} target={this.props.suggestion.target}>{this.props.suggestion.suggestionName}</a> FROM {this.props.suggestion.suggestionSource}
+          <a href={this.props.suggestion.suggestionLink} target={this.props.suggestion.target}>{this.props.suggestion.suggestionName}</a> FROM {this.props.suggestion.suggestionSource}
         </div>
-      </div>
+      </li>
     );
   }
 }

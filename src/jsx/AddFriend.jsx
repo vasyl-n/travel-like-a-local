@@ -5,34 +5,34 @@ class AddFriend extends React.Component {
     super(props);
     this.handleAddFriendClick = this.handleAddFriendClick.bind(this);
     this.friendOptionChange = this.friendOptionChange.bind(this);
-    this.state = {friendOption:''};
+    this.state = { friendOption: '' };
   }
 
-  handleAddFriendClick(e){
+  handleAddFriendClick(e) {
     e.preventDefault();
     this.props.handleAddFriend(this.state.friendOption);
   }
 
   friendOptionChange(e) {
-    this.setState({friendOption:e.target.value});
+    this.setState({ friendOption: e.target.value });
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.friendsToAdd[0]) {
-      this.setState({friendOption: nextProps.friendsToAdd[0].username});
+      this.setState({ friendOption: nextProps.friendsToAdd[0].username });
     }
   }
 
   render() {
-    return(
+    return (
       <div>
         <form>
           <label>
             <select onChange={this.friendOptionChange} value={this.state.friendOption}>
-            {this.props.friendsToAdd.map((friend)=> <option value={friend.username} key={friend.id}>{friend.username}</option>)}
+              {this.props.friendsToAdd.map((friend) => <option value={friend.username} key={friend.id}>{friend.username}</option>)}
             </select>
           </label>
-          <input type="submit" value="Add Friend" onClick={this.handleAddFriendClick} />
+          <input className="add-friend-btn" type="submit" value="Add Friend" onClick={this.handleAddFriendClick} />
         </form>
       </div>
     );

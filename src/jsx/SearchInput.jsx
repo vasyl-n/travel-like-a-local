@@ -4,34 +4,34 @@ class SearchInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputSearchDest : ''
+      inputSearchDest: ''
     }
     this.handleDestInputSearch = this.handleDestInputSearch.bind(this)
     this.handleSearchDestSubmit = this.handleSearchDestSubmit.bind(this)
   }
 
-  handleDestInputSearch(e){
+  handleDestInputSearch(e) {
     this.setState({
       inputSearchDest: e.target.value
     })
   }
 
-  handleSearchDestSubmit(e){
+  handleSearchDestSubmit(e) {
     e.preventDefault();
     this.props.handleSearchDest(this.state.inputSearchDest);
   }
 
 
   render() {
-    return(
+    return (
       <div>
-        <form>
+        <form className="hero-form">
           <label>
             <h1>
               SKIP THE TOURIST TRAPS<br />
               ENJOY A CITY LIKE A LOCAL <br />
             </h1>
-            <input placeholder="Where would you like to travel?" type="text" value={this.state.inputSearchDest} onChange={this.handleDestInputSearch}/>
+            <input className="hero-input" placeholder="Where would you like to travel?" type="text" value={this.state.inputSearchDest} onChange={this.handleDestInputSearch} />
           </label>
           <input type="submit" value="Submit" onClick={this.handleSearchDestSubmit} />
         </form>
