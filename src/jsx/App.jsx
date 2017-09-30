@@ -16,18 +16,23 @@ class App extends React.Component {
     this.handleAddFriend = this.handleAddFriend.bind(this);
     this.handleSearchDest = this.handleSearchDest.bind(this);
     this.handleAddSuggestion = this.handleAddSuggestion.bind(this);
+    this.handleFriendDelete = this.handleFriendDelete.bind(this);
     this.state = {
       userName: this.props.username,
+      userID:'',
       friendsToAdd: [],
       friendList: [],
       suggestionList: [],
       suggestionToAdd:{},
-      destinations:[]
+      destinations:[],
+      weather : '',
+      weatherIcon : ''
     }
   }
 
   componentDidMount(){
     ajaxHandler.getFriendList(this.state.userName, function(response){
+      //console.log(response.data);
       this.setState({
         friendList: response.data
       });
@@ -44,6 +49,14 @@ class App extends React.Component {
       this.setState({
         destinations: response
       });
+    }.bind(this));
+    ajaxHandler.handleGetLoggedUserID(this.state.userName, function(response){
+      //console.log(response.data);
+      if (response.data.length > 0) {
+        this.setState({
+          userID: response.data[0].ID
+        });
+      }
     }.bind(this));
   }
 
@@ -75,6 +88,12 @@ class App extends React.Component {
   }
 
   handleSearchDest(location) {
+    //get weather data
+    ajaxHandler.getWeatherData(location, function(response){
+      var weather = response.data.query.results.channel.item.condition.temp + "°C and " + response.data.query.results.channel.item.condition.text;
+      this.setState({weather:weather});
+    }.bind(this));
+
     if (this.state.userName === 'not logged in') {
       var source = 'Google';
       var suggestionList = [];
@@ -127,6 +146,19 @@ class App extends React.Component {
     });
   }
 
+  handleFriendDelete(userID, friendID) {
+    var friendList = this.state.friendList;
+    var length = friendList.length;
+    for (var i = 0; i < length; i++) {
+      if (JSON.stringify(friendList[i].userID) === JSON.stringify(userID) && JSON.stringify(friendList[i].friendID) === JSON.stringify(friendID)) {
+        friendList = friendList.slice(0, i).concat(friendList.slice(i+1, length));
+        break;
+      }
+    }
+    ajaxHandler.deleteFriendship(userID, friendID, function(){
+      this.setState({friendList:friendList});
+    }.bind(this));
+  }
 
   render() {
     return(
@@ -134,14 +166,14 @@ class App extends React.Component {
         <Nav userName={this.state.userName}/>
          <div>
             <SearchInput handleSearchDest={this.handleSearchDest} />
-            <SuggestionList suggestionList={this.state.suggestionList}/>
+            <SuggestionList suggestionList={this.state.suggestionList} weather={this.state.weather}/>
           </div>
           {this.state.userName !== 'not logged in' &&
           <div>
             <DestinationInput handleInputDest={this.handleInputDest} />
             <AddSuggestion userName={this.state.userName} handleAddSuggestion={this.handleAddSuggestion} destinations={this.state.destinations}/>
             <AddFriend userName={this.state.userName} friendsToAdd={this.state.friendsToAdd} handleAddFriend={this.handleAddFriend}/>
-            <FriendList userName={this.state.userName} friendList={this.state.friendList}/>
+            <FriendList userName={this.state.userName} userID={this.state.userID} friendList={this.state.friendList} handleFriendDelete={this.handleFriendDelete}/>
           </div>
           }
       </div>
