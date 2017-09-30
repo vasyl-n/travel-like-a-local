@@ -29,12 +29,11 @@ class AddFriend extends React.Component {
       <div>
         <form>
           <label>
-            <p>Add Friend</p>
             <select onChange={this.friendOptionChange} value={this.state.friendOption}>
             {this.props.friendsToAdd.map((friend)=> <option value={friend.username} key={friend.id}>{friend.username}</option>)}
             </select>
           </label>
-          <input type="submit" value="Submit" onClick={this.handleAddFriendClick} />
+          <input type="submit" value="Add Friend" onClick={this.handleAddFriendClick} />
         </form>
       </div>
     );

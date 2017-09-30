@@ -1,6 +1,5 @@
 import React from 'react';
 import FriendListEntry from "./FriendListEntry.jsx";
-import ajaxHandler from '../../lib/ajaxHandler.js';
 
 class FriendList extends React.Component {
   constructor(props) {
@@ -8,7 +7,7 @@ class FriendList extends React.Component {
   }
 
   render() {
-    console.log(this.props.friendList);
+    //console.log(this.props.friendList);
     return(
       <div>
         <p>{this.props.userName} these are your friends:</p>
