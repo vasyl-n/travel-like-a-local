@@ -4,13 +4,7 @@ import ReactDOM from 'react-dom';
 class SuggestionListEntry extends React.Component {
   constructor(props) {
     super(props);
-    //this.onItemClick = this.onItemClick.bind(this);
   }
-
-
-  // onItemClick(e) {
-  //   this.props.handleSuggestionClick(this.props.suggestion);
-  // }
 
   render() {
     return (
@@ -22,7 +16,5 @@ class SuggestionListEntry extends React.Component {
     );
   }
 }
-
-//<div className="add" onClick={this.onItemClick}>+</div>
 
 export default SuggestionListEntry;

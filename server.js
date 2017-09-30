@@ -7,9 +7,9 @@ var path = require('path');
 
 
 var app = express();
-
+// set views to look in the public directory
 app.set('views', path.join(__dirname, 'public'));
-
+// set app view engine html to render ejs files
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
@@ -36,6 +36,8 @@ staticRouter.get('/', function(req, res){
   if (req.session.user){
     username = req.session.user;
   }
+  //pass the username from the session to index.html
+  //to have access to usename on the client side
   res.render('index', {data:username});
 });
 staticRouter.get('/index.html', utilities.checkUser);
@@ -59,14 +61,22 @@ app.use(express.static(__dirname + '/public'));
 
 
 var apiRouter = express.Router();
+//path to show drop down of remaining friends, but it shows all users  except for the logged in user
+// work to do here is to only show users that have not been added as friends in the dropdown
 apiRouter.get('/remaining-friends/:username', utilities.getSuggestedFriendsForUser);
+// path to show friend list for logged in user
 apiRouter.get('/friendlist/:username', utilities.getFriendListForUser);
+//path to show results from google maps API
 apiRouter.get('/googlemaps/:location', utilities.getPlacesFromGoogleMapsProxy);
+//path to show suggestions from your friends for the destination you searched for
 apiRouter.get('/suggestions/:location/:username', utilities.getSuggestionsFromFriends);
+//path to show all destinations
 apiRouter.get('/destinations', utilities.getDestinations);
 apiRouter.post('/users/:username', utilities.getLoggedUserId);
+//path to add a new destination to DB
 apiRouter.post('/destinations/:newdest', utilities.addNewDest);
 apiRouter.post('/addfriend', utilities.addNewFriend);
+//path to add a comment/suggestion for a selected destination
 apiRouter.post('/addsuggestion', utilities.addNewSuggestion);
 apiRouter.delete('/deletefriendship/:userID/:friendID', utilities.deleteFriendship);
 app.use('/api', apiRouter);
