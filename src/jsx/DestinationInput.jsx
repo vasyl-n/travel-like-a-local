@@ -19,6 +19,9 @@ class DestinationInput extends React.Component {
   handleInputDestClick(e){
     e.preventDefault();
     this.props.handleInputDest(this.state.inputDest);
+    this.setState({
+      inputDest: ""
+    });
   }
 
 

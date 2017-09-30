@@ -48,8 +48,13 @@ class App extends React.Component {
   }
 
   handleInputDest(destination){
+    var that = this;
     ajaxHandler.handlePostDestination(destination, function(response){
-      console.log(response);
+        ajaxHandler.getDestinations(function(response){
+          that.setState({
+            destinations: response
+        });
+      });
     });
   }
 
