@@ -52,8 +52,11 @@ body {
   margin: 20px;
   border-bottom: 1px solid #ccc;
 }
-.suggestion-list-head {
-
+.forecast {
+  position: absolute;
+  right: 100px;
+  font-weight: bold;
+  font-size: 20px;
 }
 .image-list-entry-title {
   font-weight: bold;

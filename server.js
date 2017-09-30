@@ -64,10 +64,11 @@ apiRouter.get('/friendlist/:username', utilities.getFriendListForUser);
 apiRouter.get('/googlemaps/:location', utilities.getPlacesFromGoogleMapsProxy);
 apiRouter.get('/suggestions/:location/:username', utilities.getSuggestionsFromFriends);
 apiRouter.get('/destinations', utilities.getDestinations);
-apiRouter.post('/users/newuser', utilities.addNewUser);
+apiRouter.post('/users/:username', utilities.getLoggedUserId);
 apiRouter.post('/destinations/:newdest', utilities.addNewDest);
 apiRouter.post('/addfriend', utilities.addNewFriend);
 apiRouter.post('/addsuggestion', utilities.addNewSuggestion);
+apiRouter.delete('/deletefriendship/:userID/:friendID', utilities.deleteFriendship);
 app.use('/api', apiRouter);
 
 app.listen(3000, function(){
