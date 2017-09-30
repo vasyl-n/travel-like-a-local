@@ -166,7 +166,7 @@ class App extends React.Component {
         <Nav userName={this.state.userName} />
         <div>
           <SearchInput handleSearchDest={this.handleSearchDest} />
-          <SuggestionList suggestionList={this.state.suggestionList} weather={this.state.weather} />
+          {this.state.suggestionList.length !== 0 && <SuggestionList suggestionList={this.state.suggestionList} weather={this.state.weather} />}
         </div>
         {this.state.userName !== 'not logged in' &&
           <div>

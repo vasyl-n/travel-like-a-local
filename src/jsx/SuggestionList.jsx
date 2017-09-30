@@ -13,8 +13,9 @@ class SuggestionList extends React.Component {
     //console.log(this.props);
     return (
       <div className="suggestion-list media">
-        <h3>Places to Visit</h3>
-        <div className="forecast">Current Weather <br /><br /> {this.props.weather}</div>
+
+        {this.props.weather && <div className="forecast">Current Weather <br /><br /> {this.props.weather}</div>}
+
         <ol>
           {
             this.props.suggestionList.map((suggestion) =>
