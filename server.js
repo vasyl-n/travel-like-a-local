@@ -4,7 +4,6 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var utilities = require('./lib/util.js');
 var path = require('path');
-var http = require('http');
 
 
 var app = express();
@@ -64,14 +63,14 @@ apiRouter.get('/remaining-friends/:username', utilities.getSuggestedFriendsForUs
 apiRouter.get('/friendlist/:username', utilities.getFriendListForUser);
 apiRouter.get('/googlemaps/:location', utilities.getPlacesFromGoogleMapsProxy);
 apiRouter.get('/suggestions/:location/:username', utilities.getSuggestionsFromFriends);
+apiRouter.get('/destinations', utilities.getDestinations);
 apiRouter.post('/users/newuser', utilities.addNewUser);
 apiRouter.post('/destinations/:newdest', utilities.addNewDest);
 apiRouter.post('/addfriend', utilities.addNewFriend);
+apiRouter.post('/addsuggestion', utilities.addNewSuggestion);
 app.use('/api', apiRouter);
 
-var server = http.createServer(app);
-
-server.listen(3000, function(){
+app.listen(3000, function(){
   console.log("listening on 3000");
 });
 

@@ -10,7 +10,7 @@ class SuggestionList extends React.Component {
 
 
   render() {
-    console.log(this.props);
+    //console.log(this.props);
     return (
       <div className="suggestion-list media">
         <div className="suggestion-list-head"></div>

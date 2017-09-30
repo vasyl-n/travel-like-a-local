@@ -7,18 +7,22 @@ import Nav from "./Nav.jsx";
 import SuggestionList from "./SuggestionList.jsx";
 import FriendList from "./FriendList.jsx";
 import SearchInput from "./SearchInput.jsx";
+import AddSuggestion from "./AddSuggestion.jsx";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.handleInputDest = this.handleInputDest.bind(this);
     this.handleAddFriend = this.handleAddFriend.bind(this);
-    this.handleSearchDest =this.handleSearchDest.bind(this);
+    this.handleSearchDest = this.handleSearchDest.bind(this);
+    this.handleAddSuggestion = this.handleAddSuggestion.bind(this);
     this.state = {
       userName: this.props.username,
       friendsToAdd: [],
       friendList: [],
-      suggestionList: []
+      suggestionList: [],
+      suggestionToAdd:{},
+      destinations:[]
     }
   }
 
@@ -36,6 +40,11 @@ class App extends React.Component {
     if (this.state.userName === 'not logged in') {
       this.setState({suggestionList:[]});
     }
+    ajaxHandler.getDestinations(function(response){
+      this.setState({
+        destinations: response
+      });
+    }.bind(this));
   }
 
   handleInputDest(destination){
@@ -106,15 +115,15 @@ class App extends React.Component {
     }
   }
 
-  handleSuggestionClick(suggestion) {
-    ajaxHandler.handleAddToPlan(this.state.userName,suggestion, function(response){
+  handleAddSuggestion(location, suggestionName, suggestionLink) {
+    var userName = this.state.userName;
+    ajaxHandler.postNewSuggestion(userName, location, suggestionName, suggestionLink, function(response){
       console.log(response);
     });
   }
 
 
   render() {
-    //console.log(this.state.userName);
     return(
       <div>
         <Nav userName={this.state.userName}/>
@@ -125,6 +134,7 @@ class App extends React.Component {
           {this.state.userName !== 'not logged in' &&
           <div>
             <DestinationInput handleInputDest={this.handleInputDest} />
+            <AddSuggestion userName={this.state.userName} handleAddSuggestion={this.handleAddSuggestion} destinations={this.state.destinations}/>
             <AddFriend userName={this.state.userName} friendsToAdd={this.state.friendsToAdd} handleAddFriend={this.handleAddFriend}/>
             <FriendList userName={this.state.userName} friendList={this.state.friendList}/>
           </div>
