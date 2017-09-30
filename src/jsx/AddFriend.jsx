@@ -24,7 +24,6 @@ class AddFriend extends React.Component {
   }
 
   render() {
-    //console.log(this.props.friendsToAdd);
     return(
       <div>
         <form>
