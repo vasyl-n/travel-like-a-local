@@ -11,10 +11,10 @@ class FriendListEntry extends React.Component {
   }
 
   render() {
-    return(
-      <div>
-        <span>{this.props.friend}</span>
-        <a onClick={this.handleDelete}>delete</a>
+    return (
+      <div className="friend-li">
+        <span className="friends-name">{this.props.friend}</span>
+        <a className="delete" onClick={this.handleDelete}>Delete</a>
       </div>
     );
   }
