@@ -121,8 +121,10 @@ class App extends React.Component {
         for (var i = 0; i < suggestions.length; i++) {
           if (suggestions[i].photos !== undefined) {
             var link = suggestions[i].photos[0].html_attributions[0].match(/href="(.*?")/g);
-            link = link[0].slice(6).slice(0, -1);
-            suggestionList.push({ suggestionName: suggestions[i].name, suggestionSource: source, suggestionLink: link, target: '_blank' });
+              if (link) {
+                link = link[0].slice(6).slice(0, -1);
+                suggestionList.push({ suggestionName: suggestions[i].name, suggestionSource: source, suggestionLink: link, target: '_blank' });
+              }
           } else {
             suggestionList.push({ suggestionName: suggestions[i].name, suggestionSource: source, suggestionLink: '#', target: '' });
           }
