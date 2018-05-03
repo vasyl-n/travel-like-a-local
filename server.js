@@ -81,7 +81,7 @@ apiRouter.post('/addsuggestion', utilities.addNewSuggestion);
 apiRouter.delete('/deletefriendship/:userID/:friendID', utilities.deleteFriendship);
 app.use('/api', apiRouter);
 
-app.listen(3000, function(){
+app.listen(process.env.PORT || 3000, function(){
   console.log("listening on 3000");
 });
 
