@@ -2,6 +2,7 @@
 ### node etc ###
 src/app.min.js
 public/app.min.js
+package-lock.json
 # Logs
 logs
 *.log
