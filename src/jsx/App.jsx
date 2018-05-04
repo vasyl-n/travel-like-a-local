@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {MuiThemeProvider, getMuiTheme} from 'material-ui';
 import ajaxHandler from '../../lib/ajaxHandler.js';
 import DestinationInput from './DestinationInput.jsx';
 import AddFriend from './AddFriend.jsx';
@@ -173,24 +174,26 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <Nav userName={this.state.userName} />
+      <MuiThemeProvider>
         <div>
-          <SearchInput handleSearchDest={this.handleSearchDest} />
-          {this.state.suggestionList.length !== 0 && <SuggestionList suggestionList={this.state.suggestionList} weather={this.state.weather} />}
-        </div>
-        {this.state.userName !== 'not logged in' &&
+          <Nav userName={this.state.userName} />
           <div>
-            <div className="form-wrapper">
-              <DestinationInput handleInputDest={this.handleInputDest} />
-              <AddSuggestion userName={this.state.userName} handleAddSuggestion={this.handleAddSuggestion} destinations={this.state.destinations} />
-              <AddFriend userName={this.state.userName} friendsToAdd={this.state.friendsToAdd} handleAddFriend={this.handleAddFriend} />
-            </div>
-            <FriendList userName={this.state.userName} userID={this.state.userID} friendList={this.state.friendList} handleFriendDelete={this.handleFriendDelete} />
-            <MapView suggestionList={this.state.suggestionList}/> 
+            <SearchInput handleSearchDest={this.handleSearchDest} />
+            {this.state.suggestionList.length !== 0 && <SuggestionList suggestionList={this.state.suggestionList} weather={this.state.weather} />}
           </div>
-        }
-      </div>
+          {this.state.userName !== 'not logged in' &&
+            <div>
+              <div className="form-wrapper">
+                <DestinationInput handleInputDest={this.handleInputDest} />
+                <AddSuggestion userName={this.state.userName} handleAddSuggestion={this.handleAddSuggestion} destinations={this.state.destinations} />
+                <AddFriend userName={this.state.userName} friendsToAdd={this.state.friendsToAdd} handleAddFriend={this.handleAddFriend} />
+              </div>
+              <FriendList userName={this.state.userName} userID={this.state.userID} friendList={this.state.friendList} handleFriendDelete={this.handleFriendDelete} />
+              <MapView suggestionList={this.state.suggestionList}/> 
+            </div>
+          }
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
