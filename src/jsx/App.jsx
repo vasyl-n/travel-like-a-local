@@ -187,7 +187,7 @@ class App extends React.Component {
               <AddFriend userName={this.state.userName} friendsToAdd={this.state.friendsToAdd} handleAddFriend={this.handleAddFriend} />
             </div>
             <FriendList userName={this.state.userName} userID={this.state.userID} friendList={this.state.friendList} handleFriendDelete={this.handleFriendDelete} />
-            <MapView/> 
+            <MapView suggestionList={this.state.suggestionList}/> 
           </div>
         }
       </div>
