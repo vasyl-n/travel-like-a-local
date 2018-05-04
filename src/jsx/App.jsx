@@ -8,6 +8,7 @@ import SuggestionList from "./SuggestionList.jsx";
 import FriendList from "./FriendList.jsx";
 import SearchInput from "./SearchInput.jsx";
 import AddSuggestion from "./AddSuggestion.jsx";
+import MapView from "./MapView.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -178,6 +179,7 @@ class App extends React.Component {
               <AddFriend userName={this.state.userName} friendsToAdd={this.state.friendsToAdd} handleAddFriend={this.handleAddFriend} />
             </div>
             <FriendList userName={this.state.userName} userID={this.state.userID} friendList={this.state.friendList} handleFriendDelete={this.handleFriendDelete} />
+            <MapView/> 
           </div>
         }
       </div>
