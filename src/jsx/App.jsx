@@ -38,19 +38,23 @@ class App extends React.Component {
         friendList: response.data
       });
     }.bind(this));
+    
     ajaxHandler.getRemainingFriends(this.state.userName, function (response) {
       this.setState({
         friendsToAdd: response.data
       });
     }.bind(this));
+    
     if (this.state.userName === 'not logged in') {
       this.setState({ suggestionList: [] });
     }
+    
     ajaxHandler.getDestinations(function (response) {
       this.setState({
         destinations: response
       });
     }.bind(this));
+    
     ajaxHandler.handleGetLoggedUserID(this.state.userName, function (response) {
       //console.log(response.data);
       if (response.data.length > 0) {
@@ -59,6 +63,7 @@ class App extends React.Component {
         });
       }
     }.bind(this));
+    
   }
 
   handleInputDest(destination) {
@@ -103,9 +108,9 @@ class App extends React.Component {
           if (suggestions[i].photos !== undefined) {
             var link = suggestions[i].photos[0].html_attributions[0].match(/href="(.*?")/g);
             link = link[0].slice(6).slice(0, -1);
-            suggestionList.push({ suggestionName: suggestions[i].name, suggestionSource: source, suggestionLink: link, target: '_blank' });
+            suggestionList.push({ suggestionName: suggestions[i].name, suggestionSource: source, suggestionLink: link, target: '_blank', location: suggestions[i].geometry.location });
           } else {
-            suggestionList.push({ suggestionName: suggestions[i].name, suggestionSource: source, suggestionLink: '#', target: '' });
+            suggestionList.push({ suggestionName: suggestions[i].name, suggestionSource: source, suggestionLink: '#', target: '', location: suggestions[i].geometry.location });
           }
         }
         this.setState({ suggestionList: suggestionList });
@@ -119,21 +124,24 @@ class App extends React.Component {
       var suggestionList = [];
       var that = this;
       ajaxHandler.getPlacesFromGoogleMaps(location, function (suggestions) {
+        
+        console.log('suggestion results......', suggestions); // RAW RESULTS FROM GOOGLE
+        
         for (var i = 0; i < suggestions.length; i++) {
           if (suggestions[i].photos !== undefined) {
             var link = suggestions[i].photos[0].html_attributions[0].match(/href="(.*?")/g);
               if (link) {
                 link = link[0].slice(6).slice(0, -1);
-                suggestionList.push({ suggestionName: suggestions[i].name, suggestionSource: source, suggestionLink: link, target: '_blank' });
+                suggestionList.push({ suggestionName: suggestions[i].name, suggestionSource: source, suggestionLink: link, target: '_blank', location: suggestions[i].geometry.location });
               }
           } else {
-            suggestionList.push({ suggestionName: suggestions[i].name, suggestionSource: source, suggestionLink: '#', target: '' });
+            suggestionList.push({ suggestionName: suggestions[i].name, suggestionSource: source, suggestionLink: '#', target: '', location: suggestions[i].geometry.location });
           }
         }
         ajaxHandler.getSuggestionsForLoggedUsers(that.state.userName, location, function (suggestions) {
           if (suggestions.length > 0) {
             for (var i = 0; i < suggestions.length; i++) {
-              suggestionList.unshift({ suggestionName: suggestions[i].suggestionName, suggestionSource: suggestions[i].friendName, suggestionLink: suggestions[i].photoLink, target: '_blank' });
+              suggestionList.unshift({ suggestionName: suggestions[i].suggestionName, suggestionSource: suggestions[i].friendName, suggestionLink: suggestions[i].photoLink, target: '_blank', location: suggestions[i].geometry.location });
             }
           }
           that.setState({ suggestionList: suggestionList });
