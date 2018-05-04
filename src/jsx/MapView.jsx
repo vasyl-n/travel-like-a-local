@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import MapViewEntry from './MapViewEntry.jsx'
 
+
+
 class MapView extends React.Component {
   constructor (props) {
     super(props);
@@ -11,19 +13,7 @@ class MapView extends React.Component {
     }
   }
   
-  // componentDidMount () {
-    
-  // }
-  
-  // componentWillReceiveProps(nextProps) {
-  //   console.log('componentWillReceiveProps......')
-    
-  //   if (this.props.status !== nextProps.status) {
-  //     this.setState({
-  //       center:''  //nextProps.suggestionList[0].location
-  //   });
-  // }
-  
+
   componentWillReceiveProps (nextProps) {
     console.log('componentWillReceiveProps......')
     if ( nextProps.suggestionList[0] ) {
@@ -48,6 +38,7 @@ class MapView extends React.Component {
           >
           
           { this.props.suggestionList ?
+            
             this.props.suggestionList.map( (suggestion, index) => 
               <MapViewEntry
                 key={index}
