@@ -15,7 +15,6 @@ class MapView extends React.Component {
   
 
   componentWillReceiveProps (nextProps) {
-    console.log('componentWillReceiveProps......')
     if ( nextProps.suggestionList[0] ) {
       this.setState({
        center: nextProps.suggestionList[0].location 
@@ -28,7 +27,6 @@ class MapView extends React.Component {
   
   render () {
     
-    console.log('map view props.....', this.props.suggestionList[0])
     return (
 
       <div className='google-map' style={{ height: '500px', width: '500px' }}>

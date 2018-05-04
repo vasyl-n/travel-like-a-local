@@ -209,5 +209,14 @@ input[type=submit]:hover {
   border-radius: 5px;
   border: 1px solid #4CAF50;
 }
+.map-marker-element {
+  display: inline;
+}
+
+.map-marker-text {
+  color: blue;
+  text-shadow: 1px 1px white;
+  white-space: nowrap;
+}
 
 
