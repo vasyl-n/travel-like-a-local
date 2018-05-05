@@ -96,7 +96,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `travelLocal`.`user_plan`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `travelLocal`.`user_plan` (
-  `ID` INT(11) NOT NULL AUTO_INCREMENT
+  `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `planName` VARCHAR(100) NOT NULL,
   `userID` INT(11) NOT NULL,
   PRIMARY KEY (`ID`),
