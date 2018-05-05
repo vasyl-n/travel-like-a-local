@@ -10,6 +10,7 @@ import FriendList from "./FriendList.jsx";
 import SearchInput from "./SearchInput.jsx";
 import AddSuggestion from "./AddSuggestion.jsx";
 import MapView from "./MapView.jsx";
+import Itinerary from "./Itinerary.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -64,7 +65,24 @@ class App extends React.Component {
         });
       }
     }.bind(this));
-    
+
+
+    ajaxHandler.getItineraries(this.state.userName, function(itinerary){
+      // console.log(this.state)
+    })
+
+    ajaxHandler.getItinerary(1, this.state.userName, function(itinerary){
+      // console.log(this.state)
+    })
+
+    ajaxHandler.postItinerary(this.state.userName, 'new Itinerary', function(res){
+
+    })
+
+    ajaxHandler.addSuggestionToItinerary(1, 47, function(res){
+
+    })
+
   }
 
   handleInputDest(destination) {
@@ -190,6 +208,7 @@ class App extends React.Component {
               </div>
               <FriendList userName={this.state.userName} userID={this.state.userID} friendList={this.state.friendList} handleFriendDelete={this.handleFriendDelete} />
               <MapView suggestionList={this.state.suggestionList}/> 
+              <Itinerary />
             </div>
           }
         </div>

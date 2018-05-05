@@ -79,6 +79,11 @@ apiRouter.post('/addfriend', utilities.addNewFriend);
 //path to add a comment/suggestion for a selected destination
 apiRouter.post('/addsuggestion', utilities.addNewSuggestion);
 apiRouter.delete('/deletefriendship/:userID/:friendID', utilities.deleteFriendship);
+apiRouter.get('/itineraries/:username', utilities.getItineraries);
+apiRouter.get('/itinerary/:username/:id', utilities.getItinerary);
+apiRouter.post('/itineraries', utilities.addItinerary);
+apiRouter.put('/itineraries', utilities.addSuggestionToItinerary);
+
 app.use('/api', apiRouter);
 
 app.listen(process.env.PORT || 3000, function(){
