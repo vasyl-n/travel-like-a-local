@@ -66,23 +66,6 @@ class App extends React.Component {
       }
     }.bind(this));
 
-
-    ajaxHandler.getItineraries(this.state.userName, function(itinerary){
-      // console.log(this.state)
-    })
-
-    ajaxHandler.getItinerary(1, this.state.userName, function(itinerary){
-      // console.log(this.state)
-    })
-
-    ajaxHandler.postItinerary(this.state.userName, 'new Itinerary', function(res){
-
-    })
-
-    ajaxHandler.addSuggestionToItinerary(1, 47, function(res){
-
-    })
-
   }
 
   handleInputDest(destination) {
