@@ -10,7 +10,13 @@ import FriendList from "./FriendList.jsx";
 import SearchInput from "./SearchInput.jsx";
 import AddSuggestion from "./AddSuggestion.jsx";
 import MapView from "./MapView.jsx";
-import Itinerary from "./Itinerary.jsx";
+// import Trips from "./Trips.jsx";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Explore from '../pages/explore.jsx'
+import Trips from '../pages/trips.jsx'
+import Friends from '../pages/friends.jsx'
+import Suggestions from '../pages/suggestions.jsx'
+
 
 class App extends React.Component {
   constructor(props) {
@@ -174,11 +180,20 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <MuiThemeProvider>
         <div>
           <Nav userName={this.state.userName} />
           <div>
+            
+            <Route exect path='/login' component={Explore} />
+            <Route exect path='/explore' component={Explore} />
+            <Route exect path='/trips' component={Trips} />
+            <Route exect path='/suggestions' component={Suggestions} />
+            <Route exect path='/friends' component={Friends} />
+
+
             <SearchInput handleSearchDest={this.handleSearchDest} />
             {this.state.suggestionList.length !== 0 && <SuggestionList suggestionList={this.state.suggestionList} weather={this.state.weather} />}
           </div>
@@ -191,7 +206,7 @@ class App extends React.Component {
               </div>
               <FriendList userName={this.state.userName} userID={this.state.userID} friendList={this.state.friendList} handleFriendDelete={this.handleFriendDelete} />
               <MapView suggestionList={this.state.suggestionList}/> 
-              <Itinerary />
+              
             </div>
           }
         </div>

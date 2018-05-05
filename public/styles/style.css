@@ -16,30 +16,34 @@ body {
 }
 
 .navbar {
-  margin-bottom: 20px;
-  padding:20px;
-  height: 100px;
+  padding: 15px;
+  height: 60px;
+  background-color: #2699FB;
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/*.navbar img {
-  height: 99px;
-  width: 100px;
-  background-image: url(../images/logo.png);
-  background-repeat: no-repeat;
-}*/
-.logo {
-  float: left;
+.tlal {
+  color: white;
+  font-size: 1.5rem;
 }
+
 .login-signup {
   float: right;
   padding: 20px 0;
 }
 .navbar a {
+  margin: 0 8px;
   text-decoration: none;
   cursor: pointer;
-  margin-right: 10px;
-  color: #4a4a4a;
+  margin-right: 2rem;
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-weight: normal;
 }
+
 .navbar a:hover {
   color: #466bcb;
 }
