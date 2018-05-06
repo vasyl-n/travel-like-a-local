@@ -35,10 +35,11 @@ staticRouter.get('/', function(req, res){
   var username = 'not logged in';
   if (req.session.user){
     username = req.session.user;
+    res.render('index', {data:username});
+  } else {
+    res.render('landing')
   }
-  //pass the username from the session to index.html
-  //to have access to usename on the client side
-  res.render('index', {data:username});
+
 });
 staticRouter.get('/index.html', utilities.checkUser);
 staticRouter.get('/login', function(req, res){
