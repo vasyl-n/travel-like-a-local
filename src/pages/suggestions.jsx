@@ -1,4 +1,8 @@
 import React from 'react';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
+import DestinationInput from '../jsx/DestinationInput.jsx';
+import AddSuggestion from "../jsx/AddSuggestion.jsx";
 
 class Suggestions extends React.Component {
   constructor(props) {
@@ -6,7 +10,10 @@ class Suggestions extends React.Component {
   }
   render() {
     return(
-      <div className="suggestions">test</div>
+      <div className="suggestions">
+        <DestinationInput handleInputDest={this.props.handleInputDest} />
+        <AddSuggestion userName={this.props.userName} handleAddSuggestion={this.props.handleAddSuggestion} destinations={this.props.destinations} />
+      </div>
     )
   }
 }

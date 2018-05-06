@@ -38,7 +38,7 @@ class SearchInput extends React.Component {
               floatingLabelText="Where would you like to travel?"
               value={this.state.inputSearchDest} onChange={this.handleDestInputSearch} 
             />
-            <Link to='/suggestions' className="explore-submit-form-button">
+            <Link to='/trips' className="explore-submit-form-button">
               <FlatButton label="Submit" primary={true} onClick={this.handleSearchDestSubmit} />
             </Link>
           </div>
