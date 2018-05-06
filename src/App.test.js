@@ -1,9 +1,19 @@
 const puppeteer = require('puppeteer');
+const faker = require('faker');
+
+const user = {
+  email: faker.internet.email(),
+  password: 'test',
+  firstName: faker.name.firstName(),
+  lastName: faker.name.lastName()
+}
+
+console.log('fake user: ', user);
 
 const isDebugging = () => {
   const debugging_mode = {
     headless: false,  // define whether Chromium is open and running
-    slowMo: 250,      // slow down operations
+    slowMo: 0,      // slow down operations
     devtools: true   // open devtools
   }
   return process.env.NODE_ENV === 'debug' ? debugging_mode : {};
@@ -40,6 +50,26 @@ describe('on page load', () => {
     const html = await page.$eval('[data-testid="navbar h3"]', e => e.innerHTML)    
     expect(html).toBe('Travel Like a Local')            
   }, 1600)
+  
+  
+  test('signup form works correctly', async() => {
+    await page.click('[data-testid="signup"]')
+    await page.click('[data-testid="username"]')
+    await page.type('[data-testid="username"]', user.email)
+    
+    await page.click('[data-testid="password"]')
+    await page.type('[data-testid="password"]', user.password)
+    
+    await page.click('[data-testid="submit-signup"]')
+    
+    await page.waitForSelector('[data-testid="success"]')
+    
+    const successMsg = await page.$eval('[data-testid="success"]', e => e.innerHTML);
+    console.log('signup success msg:', successMsg);
+    
+    expect(successMsg).toBe('Hello ' + user.email +'!')
+    
+  }, 56600)
   
 })
 
