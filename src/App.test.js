@@ -1,5 +1,4 @@
 const puppeteer = require('puppeteer');
-console.log(puppeteer)
 
 const isDebugging = () => {
   const debugging_mode = {
@@ -30,11 +29,17 @@ describe('on page load', () => {
   expect(2+2).toBe(4);            
   }, 1600) // set timeout for test
   
+  test('navbar loads correctly', async() => {  
+    // check if navbar element exists
+    const navbar = await page.$eval('.navbar', el => el ? true : false );
+    expect(navbar).toBe(true);
+  }, 1600) // set timeout for test
   
-  test('navbar h3 loads correctly', async() => {    
-    // look for and select an element
+  test('navbar h3 (title) loads correctly', async() => {  
+    
+    // look for and select navbar h3 element
     const html = await page.$eval('.navbar h3', e => e.innerHTML)    
-    // expect statement / evaluate test
+    // html to match text
     expect(html).toBe('Travel Like a Local')            
   }, 1600) // set timeout for test
   
