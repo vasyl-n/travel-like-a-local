@@ -70,14 +70,16 @@ class Nav extends React.Component {
           {/* <div className="login-signup"> */}
             {/* {props.userName !== 'not logged in' && <span>Hello {props.userName}!     </span>} */}
             
-            {this.props.userName !== 'not logged in' && <a className="logout-button" href="logout" onClick={()=>localStorage.clear()}>Logout</a>}
-            {this.props.userName === 'not logged in' && <a href="signup">SignUp</a>}
-            {this.props.userName === 'not logged in' && <a href="login">Login</a>}
+            {this.props.userName !== 'not logged in' && <a data-testid="logout" className="logout-button" href="logout" onClick={()=>localStorage.clear()}>Logout</a>}
+            {this.props.userName === 'not logged in' && <a  data-testid="signup" href="signup">SignUp</a>}
+            {this.props.userName === 'not logged in' && <a  data-testid="login" href="login">Login</a>}
 
         </div>
+
       </nav>
     );
   }
+
 };
 
 export default Nav;
