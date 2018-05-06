@@ -26,7 +26,6 @@ class SearchInput extends React.Component {
 
 
   render() {
-    console.log(history)
     return (
         <div className="hero-form">
           <h1>
