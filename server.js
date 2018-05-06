@@ -40,6 +40,18 @@ staticRouter.get('/', function(req, res){
   //to have access to usename on the client side
   res.render('index', {data:username});
 });
+staticRouter.get('/explore', (req, res) => {
+  res.redirect('/')
+})
+staticRouter.get('/trips', (req, res) => {
+  res.redirect('/')
+})
+staticRouter.get('/suggestions', (req, res) => {
+  res.redirect('/')
+})
+staticRouter.get('/friends', (req, res) => {
+  res.redirect('/')
+})
 staticRouter.get('/index.html', utilities.checkUser);
 staticRouter.get('/login', function(req, res){
   res.redirect('login.html');

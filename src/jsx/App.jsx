@@ -186,14 +186,13 @@ class App extends React.Component {
           <Nav userName={this.state.userName} />
           <div>
             
-            <Route exect path='/login' component={Explore} />
-            <Route exect path='/explore' component={Explore} />
+            <Route exect path='/login' render={()=><Explore handleSearchDest={this.handleSearchDest} />} />
+            <Route exect path='/explore' render={()=><Explore handleSearchDest={this.handleSearchDest} />} />
             <Route exect path='/trips' component={Trips} />
             <Route exect path='/suggestions' component={Suggestions} />
             <Route exect path='/friends' component={Friends} />
 
 
-            <SearchInput handleSearchDest={this.handleSearchDest} />
             {this.state.suggestionList.length !== 0 && <SuggestionList suggestionList={this.state.suggestionList} weather={this.state.weather} />}
           </div>
           {this.state.userName !== 'not logged in' &&
