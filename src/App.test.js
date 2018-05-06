@@ -27,14 +27,20 @@ beforeAll(async() => {
 
 describe('on page load', () => {
   
+  test('testing is functional', async() => {
+
+  expect(2+2).toBe(4);
+            
+  }, 1600) // set timeout for test
+  
+  
   test('h3 loads correctly', async() => {
     
     // look for and select an element
     // const html = await page.$eval('.logo', e => e.innerHTML)
     
-    // // expect statement / evaluate test
-    // expect(html).toBe('Travel Like a Local
-    expect(2+2).toBe(4);
+    // expect statement / evaluate test
+    // expect(html).toBe('Travel Like a Local')
             
   }, 1600) // set timeout for test
   
