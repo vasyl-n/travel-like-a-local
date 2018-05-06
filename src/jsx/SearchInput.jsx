@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class SearchInput extends React.Component {
   constructor(props) {
@@ -17,15 +18,15 @@ class SearchInput extends React.Component {
   }
 
   handleSearchDestSubmit(e) {
-    e.preventDefault();
     this.props.handleSearchDest(this.state.inputSearchDest);
   }
 
 
   render() {
+    console.log(history)
     return (
       <div>
-        <form className="hero-form">
+        <div className="hero-form">
           <label>
             <h1>
               SKIP THE TOURIST TRAPS<br />
@@ -33,8 +34,10 @@ class SearchInput extends React.Component {
             </h1>
             <input className="hero-input" placeholder="Where would you like to travel?" type="text" value={this.state.inputSearchDest} onChange={this.handleDestInputSearch} />
           </label>
-          <input type="submit" value="Submit" onClick={this.handleSearchDestSubmit} />
-        </form>
+          <Link to='/suggestions'>
+            <input type="submit" value="Submit" onClick={this.handleSearchDestSubmit} />
+          </Link>
+        </div>
       </div>
     );
   }
