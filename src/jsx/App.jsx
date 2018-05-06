@@ -182,10 +182,9 @@ class App extends React.Component {
   render() {
     return (
       <MuiThemeProvider>
-        <div>
           <Nav userName={this.state.userName} />
-          <div>
-            
+          {/* <div> */}
+            <Route exect path='/' render={()=><Explore handleSearchDest={this.handleSearchDest} />} />
             <Route exect path='/login' render={()=><Explore handleSearchDest={this.handleSearchDest} />} />
             <Route exect path='/explore' render={()=><Explore handleSearchDest={this.handleSearchDest} />} />
             <Route exect path='/trips' component={Trips} />
@@ -194,7 +193,7 @@ class App extends React.Component {
 
 
             {this.state.suggestionList.length !== 0 && <SuggestionList suggestionList={this.state.suggestionList} weather={this.state.weather} />}
-          </div>
+          {/* </div> */}
           {this.state.userName !== 'not logged in' &&
             <div>
               <div className="form-wrapper">
@@ -207,7 +206,6 @@ class App extends React.Component {
               
             </div>
           }
-        </div>
       </MuiThemeProvider>
     );
   }

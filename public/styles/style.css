@@ -1,18 +1,9 @@
 @import url("http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
 
 body {
-  background: #77adbe;
   margin: 0;
   font-family: "Helvetica", Arial, sans-serif;
   font-size: 16px;
-}
-#app {
-  max-width: 100%;
-  margin: 0px auto;
-  background: url('./../images/hero.jpg') no-repeat;
-  background-size: cover;
-  min-height: 110vh;
-  padding-bottom: 25px;
 }
 
 .navbar {
@@ -20,8 +11,8 @@ body {
   height: 60px;
   background-color: #2699FB;
   display: flex;
-    justify-content: space-between;
-    align-items: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .tlal {
@@ -98,6 +89,7 @@ form {
   text-align: center;
 }
 form h1 {
+  font-family: serif;
   color: #4a4a4a;
 }
 input[type=text], select {
@@ -129,19 +121,6 @@ input[type=submit]:hover {
     background-color: #45a049;
 }
 
-
-
-.hero-form {
-  background-color: rgba(0,0,0,0.5);
-  border-radius: 5px;
-  width: 50%;
-  padding: 20px 0;
-  border: 1px solid #4CAF50;
-}
-
-.hero-form h1 {
-  color: #fff;
-}
 
 .hero-form .hero-input {
   width: 60%;
@@ -224,3 +203,38 @@ input[type=submit]:hover {
 }
 
 
+
+/* ========================================= */
+/* Explore */
+/* ========================================= */
+
+.search-input-wrap {
+  height: 87vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.explore-form-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.explore-submit-form-button {
+  margin-left: 40px;
+}
+
+
+.hero-form {
+  width: 70%;
+  margin-bottom: 7rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-form h1 {
+  color: #466bcb;
+  text-align: center;
+  font-size: 2.5rem;
+}

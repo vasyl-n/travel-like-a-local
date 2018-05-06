@@ -8,7 +8,7 @@ class Explore extends React.Component {
   render() {
     console.log(this.props)
     return(
-      <div className="test">
+      <div className="search-input-wrap">
         <SearchInput handleSearchDest={this.props.handleSearchDest} />
       </div>
     )

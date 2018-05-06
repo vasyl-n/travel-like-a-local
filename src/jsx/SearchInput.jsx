@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import TextField from 'material-ui/TextField';
+import FlatButton from 'material-ui/FlatButton';
 
 class SearchInput extends React.Component {
   constructor(props) {
@@ -19,26 +21,29 @@ class SearchInput extends React.Component {
 
   handleSearchDestSubmit(e) {
     this.props.handleSearchDest(this.state.inputSearchDest);
+    // history.pushState('/suggestions', '/suggestions', '/suggestions')
   }
 
 
   render() {
     console.log(history)
     return (
-      <div>
         <div className="hero-form">
-          <label>
-            <h1>
-              SKIP THE TOURIST TRAPS<br />
-              ENJOY A CITY LIKE A LOCAL <br />
-            </h1>
-            <input className="hero-input" placeholder="Where would you like to travel?" type="text" value={this.state.inputSearchDest} onChange={this.handleDestInputSearch} />
-          </label>
-          <Link to='/suggestions'>
-            <input type="submit" value="Submit" onClick={this.handleSearchDestSubmit} />
-          </Link>
+          <h1>
+            Skip the tourist traps<br />
+            Enjoy a city like a local<br />
+          </h1>
+          <div className="explore-form-wrap">
+            <TextField 
+              hintText="San Francisco"
+              floatingLabelText="Where would you like to travel?"
+              value={this.state.inputSearchDest} onChange={this.handleDestInputSearch} 
+            />
+            <Link to='/suggestions' className="explore-submit-form-button">
+              <FlatButton label="Submit" primary={true} onClick={this.handleSearchDestSubmit} />
+            </Link>
+          </div>
         </div>
-      </div>
     );
   }
 
