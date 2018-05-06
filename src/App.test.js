@@ -26,22 +26,20 @@ beforeAll(async() => {
 describe('on page load', () => {
   
   test('testing is functional', async() => {
-  expect(2+2).toBe(4);            
+    // simple test of jest functionality
+    expect(2+2).toBe(4);            
   }, 1600) // set timeout for test
   
   test('navbar loads correctly', async() => {  
     // check if navbar element exists
-    const navbar = await page.$eval('.navbar', el => el ? true : false );
+    const navbar = await page.$eval('[data-testid="navbar"]', el => el ? true : false );
     expect(navbar).toBe(true);
-  }, 1600) // set timeout for test
+  }, 1600)
   
-  test('navbar h3 (title) loads correctly', async() => {  
-    
-    // look for and select navbar h3 element
-    const html = await page.$eval('.navbar h3', e => e.innerHTML)    
-    // html to match text
+  test('navbar h3 (title) loads correctly', async() => {   
+    const html = await page.$eval('[data-testid="navbar h3"]', e => e.innerHTML)    
     expect(html).toBe('Travel Like a Local')            
-  }, 1600) // set timeout for test
+  }, 1600)
   
 })
 

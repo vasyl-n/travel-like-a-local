@@ -38,9 +38,9 @@ class Nav extends React.Component {
 
   render() {
     return (
-      <nav className="navbar">
+      <nav className="navbar" data-testid="navbar">
           <div className="logo">
-            <h3 className="tlal">Travel Like a Local</h3>
+            <h3 data-testid="navbar h3" className="tlal">Travel Like a Local</h3>
           </div>
           <div className="header-links">
           <Link to="/explore">Search</Link>
@@ -73,6 +73,7 @@ class Nav extends React.Component {
             {this.props.userName !== 'not logged in' && <a className="logout-button" href="logout" onClick={()=>localStorage.clear()}>Logout</a>}
             {this.props.userName === 'not logged in' && <a href="signup">SignUp</a>}
             {this.props.userName === 'not logged in' && <a href="login">Login</a>}
+
         </div>
       </nav>
     );
