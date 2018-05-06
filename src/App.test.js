@@ -62,12 +62,12 @@ describe('on page load', () => {
     
     await page.click('[data-testid="submit-signup"]')
     
-    await page.waitForSelector('[data-testid="success"]')
+    await page.waitForSelector('[data-testid="friendList-username"]')
     
-    const successMsg = await page.$eval('[data-testid="success"]', e => e.innerHTML);
-    console.log('signup success msg:', successMsg);
+    const usernameSuccess = await page.$eval('[data-testid="friendList-username"]', e => e.innerHTML);
+    console.log('signup success usernamme:', usernameSuccess);
     
-    expect(successMsg).toBe('Hello ' + user.email +'!')
+    expect(usernameSuccess).toBe(user.email)
     
   }, 56600)
   
