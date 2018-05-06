@@ -183,7 +183,6 @@ class App extends React.Component {
     return (
       <MuiThemeProvider>
           <Nav userName={this.state.userName} />
-          {/* <div> */}
             <Route exect path='/' render={()=><Explore handleSearchDest={this.handleSearchDest} />} />
             <Route exect path='/login' render={()=><Explore handleSearchDest={this.handleSearchDest} />} />
             <Route exect path='/explore' render={()=><Explore handleSearchDest={this.handleSearchDest} />} />
@@ -193,7 +192,6 @@ class App extends React.Component {
 
 
             {this.state.suggestionList.length !== 0 && <SuggestionList suggestionList={this.state.suggestionList} weather={this.state.weather} />}
-          {/* </div> */}
           {this.state.userName !== 'not logged in' &&
             <div>
               <div className="form-wrapper">
