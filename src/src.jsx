@@ -9,6 +9,6 @@ import Explore from './pages/explore.jsx';
 // username coming from express user session
 ReactDOM.render(
   <Router>
-      <App username={username}/>
+    <App username={username}/>
   </Router>
 , document.getElementById('app'));

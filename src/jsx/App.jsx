@@ -1,17 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {MuiThemeProvider, getMuiTheme} from 'material-ui';
+import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import ajaxHandler from '../../lib/ajaxHandler.js';
-import DestinationInput from './DestinationInput.jsx';
-import AddFriend from './AddFriend.jsx';
 import Nav from "./Nav.jsx";
-import SuggestionList from "./SuggestionList.jsx";
-import FriendList from "./FriendList.jsx";
-import SearchInput from "./SearchInput.jsx";
-import AddSuggestion from "./AddSuggestion.jsx";
-import MapView from "./MapView.jsx";
-// import Trips from "./Trips.jsx";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Explore from '../pages/explore.jsx'
 import Trips from '../pages/trips.jsx'
 import Friends from '../pages/friends.jsx'
@@ -41,7 +32,6 @@ class App extends React.Component {
 
   componentDidMount() {
     ajaxHandler.getFriendList(this.state.userName, function (response) {
-      //console.log(response.data);
       this.setState({
         friendList: response.data
       });
@@ -122,7 +112,6 @@ class App extends React.Component {
           }
         }
         this.setState({ suggestionList: suggestionList });
-        //console.log(suggestionList);
       }.bind(this));
     }
 
@@ -180,36 +169,22 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <MuiThemeProvider>
-        <div>
           <Nav userName={this.state.userName} />
-          <div>
+            <Route exect path='/explore' render={()=><Explore handleSearchDest={this.handleSearchDest} />} />
+            <Route exect path='/trips' render={()=><Trips suggestionList={this.state.suggestionList} weather={this.state.weather} />} />
+            <Route exect path='/suggestions' render={()=><Suggestions handleInputDest={this.handleInputDest} userName={this.state.userName} handleAddSuggestion={this.handleAddSuggestion} destinations={this.state.destinations}/>} />
+            <Route exect path='/friends' render={()=><Friends userName={this.state.userName} friendsToAdd={this.state.friendsToAdd} handleAddFriend={this.handleAddFriend} userID={this.state.userID} friendList={this.state.friendList} handleFriendDelete={this.handleFriendDelete} /> } />
+            {location.pathname === '/' && <Redirect to='/explore' /> }
+            {location.pathname === '/login' && <Redirect to='/explore' /> }
+
             
-            <Route exect path='/login' component={Explore} />
-            <Route exect path='/explore' component={Explore} />
-            <Route exect path='/trips' component={Trips} />
-            <Route exect path='/suggestions' component={Suggestions} />
-            <Route exect path='/friends' component={Friends} />
-
-
-            <SearchInput handleSearchDest={this.handleSearchDest} />
-            {this.state.suggestionList.length !== 0 && <SuggestionList suggestionList={this.state.suggestionList} weather={this.state.weather} />}
-          </div>
-          {this.state.userName !== 'not logged in' &&
-            <div>
-              <div className="form-wrapper">
-                <DestinationInput handleInputDest={this.handleInputDest} />
-                <AddSuggestion userName={this.state.userName} handleAddSuggestion={this.handleAddSuggestion} destinations={this.state.destinations} />
-                <AddFriend userName={this.state.userName} friendsToAdd={this.state.friendsToAdd} handleAddFriend={this.handleAddFriend} />
+            {this.state.userName !== 'not logged in' &&
+              <div>
+    
               </div>
-              <FriendList userName={this.state.userName} userID={this.state.userID} friendList={this.state.friendList} handleFriendDelete={this.handleFriendDelete} />
-              <MapView suggestionList={this.state.suggestionList}/> 
-              
-            </div>
-          }
-        </div>
+            }
       </MuiThemeProvider>
     );
   }
