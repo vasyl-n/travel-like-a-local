@@ -15,7 +15,7 @@ console.log('fake user: ', user);
 const isDebugging = () => {
   const debugging_mode = {
     headless: false,  // define whether Chromium is open and running
-    slowMo: 0,      // slow down operations
+    slowMo: 0,      // slow down operations, was set to 250 (slow), currently set to 0 (fast)
     devtools: true   // open devtools
   }
   return process.env.NODE_ENV === 'debug' ? debugging_mode : {};
@@ -32,11 +32,13 @@ beforeAll(async() => {
   browser = await puppeteer.launch(isDebugging()); // browser instance
   page = await browser.newPage();  // page instance  
   
+  // capture console logs
   page.on('console', c => {
     //console.log(c.text);
     logs.push(c.text)
   });
   
+  // capture page errors
   page.on('pageerror', e => errors.push(e.text));
   
   // tell puppeteer where to navigate to in the browser
