@@ -31,6 +31,14 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    if(this.props.username !== 'not logged in'){
+      localStorage.setItem('username', this.props.username)
+    }
+    var un = localStorage.getItem('username')
+    if(un){
+      this.setState({username: un})
+    }
+
     ajaxHandler.getFriendList(this.state.userName, function (response) {
       this.setState({
         friendList: response.data
@@ -171,20 +179,20 @@ class App extends React.Component {
   render() {
     return (
       <MuiThemeProvider>
-          <Nav userName={this.state.userName} />
-            <Route exect path='/explore' render={()=><Explore handleSearchDest={this.handleSearchDest} />} />
-            <Route exect path='/trips' render={()=><Trips suggestionList={this.state.suggestionList} weather={this.state.weather} />} />
-            <Route exect path='/suggestions' render={()=><Suggestions handleInputDest={this.handleInputDest} userName={this.state.userName} handleAddSuggestion={this.handleAddSuggestion} destinations={this.state.destinations}/>} />
-            <Route exect path='/friends' render={()=><Friends userName={this.state.userName} friendsToAdd={this.state.friendsToAdd} handleAddFriend={this.handleAddFriend} userID={this.state.userID} friendList={this.state.friendList} handleFriendDelete={this.handleFriendDelete} /> } />
-            {location.pathname === '/' && <Redirect to='/explore' /> }
-            {location.pathname === '/login' && <Redirect to='/explore' /> }
+        <Nav userName={this.state.userName} />
+        <Route exect path='/explore' render={()=><Explore handleSearchDest={this.handleSearchDest} />} />
+        <Route exect path='/trips' render={()=><Trips suggestionList={this.state.suggestionList} weather={this.state.weather} />} />
+        <Route exect path='/suggestions' render={()=><Suggestions handleInputDest={this.handleInputDest} userName={this.state.userName} handleAddSuggestion={this.handleAddSuggestion} destinations={this.state.destinations}/>} />
+        <Route exect path='/friends' render={()=><Friends userName={this.state.userName} friendsToAdd={this.state.friendsToAdd} handleAddFriend={this.handleAddFriend} userID={this.state.userID} friendList={this.state.friendList} handleFriendDelete={this.handleFriendDelete} /> } />
+        {location.pathname === '/' && <Redirect to='/explore' /> }
+        {location.pathname === '/login' && <Redirect to='/explore' /> }
 
+        
+        {this.state.userName !== 'not logged in' &&
+          <div>
             
-            {this.state.userName !== 'not logged in' &&
-              <div>
-    
-              </div>
-            }
+          </div>
+        }
       </MuiThemeProvider>
     );
   }

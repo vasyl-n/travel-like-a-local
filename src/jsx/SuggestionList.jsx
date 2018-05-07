@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SuggestionListEntry from "./SuggestionListEntry.jsx";
+import styled from 'styled-components';
 
 
 class SuggestionList extends React.Component {
@@ -10,13 +11,9 @@ class SuggestionList extends React.Component {
 
 
   render() {
-    //console.log(this.props);
+  
     return (
-      <div className="suggestion-list media">
-
-        {this.props.weather && <div className="forecast">Current Weather <br /><br /> {this.props.weather}</div>}
-
-        <ol>
+        <StyledSuggestionList>
           {
             this.props.suggestionList.map((suggestion) =>
               <SuggestionListEntry
@@ -25,10 +22,14 @@ class SuggestionList extends React.Component {
                 />
             )
           }
-        </ol>
-      </div>
+        </StyledSuggestionList>
     )
   }
 }
+
+const StyledSuggestionList = styled.ul`
+  list-style: none;
+  flex: 1;
+`
 
 export default SuggestionList;

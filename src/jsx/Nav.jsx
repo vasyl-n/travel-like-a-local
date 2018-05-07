@@ -15,7 +15,7 @@ var Nav = (props) => {
         {/* <div className="login-signup"> */}
           {/* {props.userName !== 'not logged in' && <span>Hello {props.userName}!     </span>} */}
           
-          {props.userName !== 'not logged in' && <a className="logout-button" href="logout">Logout</a>}
+          {props.userName !== 'not logged in' && <a className="logout-button" href="logout" onClick={()=>localStorage.clear()}>Logout</a>}
           {props.userName === 'not logged in' && <a href="signup">SignUp</a>}
           {props.userName === 'not logged in' && <a href="login">Login</a>}
       </div>
