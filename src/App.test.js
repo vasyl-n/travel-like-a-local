@@ -31,13 +31,20 @@ let errors = [];
 beforeAll(async() => {
   browser = await puppeteer.launch(isDebugging()); // browser instance
   page = await browser.newPage();  // page instance  
-  page.on('console', c => logs.push(c.text));
+  
+  page.on('console', c => {
+    //console.log(c.text);
+    logs.push(c.text)
+  });
+  
   page.on('pageerror', e => errors.push(e.text));
   
   // tell puppeteer where to navigate to in the browser
   await page.goto('http://localhost:3000/')  
   // set options for page
   page.setViewport({width: 500, height: 2400});
+  
+  //await page.emulate(iPhone)
   
 })
 
