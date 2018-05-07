@@ -1,5 +1,7 @@
 const puppeteer = require('puppeteer');
 const faker = require('faker');
+// const devices = require('puppeteer/DeviceDescriptors');
+// const iPhone = require['iPhone6'];
 
 const user = {
   email: faker.internet.email(),
@@ -19,12 +21,18 @@ const isDebugging = () => {
   return process.env.NODE_ENV === 'debug' ? debugging_mode : {};
 }
 
+
+
 let browser;
 let page;
+let logs = [];
+let errors = [];
 
 beforeAll(async() => {
   browser = await puppeteer.launch(isDebugging()); // browser instance
   page = await browser.newPage();  // page instance  
+  page.on('console', c => logs.push(c.text));
+  page.on('pageerror', e => errors.push(e.text));
   
   // tell puppeteer where to navigate to in the browser
   await page.goto('http://localhost:3000/')  
@@ -32,6 +40,8 @@ beforeAll(async() => {
   page.setViewport({width: 500, height: 2400});
   
 })
+
+
 
 describe('on page load', () => {
   
@@ -70,6 +80,15 @@ describe('on page load', () => {
     expect(usernameSuccess).toBe(user.email)
     
   }, 56600)
+  
+  
+  test('does not have any console.logs', () => {
+    expect(logs.length).toBe(0)
+  })
+  
+  test('does not have any exceptions', () => {
+    expect(errors.length).toBe(0)
+  })
   
 })
 
