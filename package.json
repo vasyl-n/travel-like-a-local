@@ -57,5 +57,8 @@
     "jest-cli": "^22.4.3",
     "puppeteer": "^1.3.0",
     "webpack-dev-server": "^1.16.5"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
