@@ -19,6 +19,7 @@ class App extends React.Component {
     this.handleFriendDelete = this.handleFriendDelete.bind(this);
     this.tripChange = this.tripChange.bind(this);
     this.tripIdChange = this.tripIdChange.bind(this);
+    this.getTrip = this.getTrip.bind(this);
     this.state = {
       userName: this.props.username,
       userID: '',
@@ -29,7 +30,8 @@ class App extends React.Component {
       destinations: [],
       weather: '',
       weatherIcon: '',
-      trip: ''
+      trip: '',
+      trips: []
     }
   }
 
@@ -192,10 +194,17 @@ class App extends React.Component {
     this.setState({tripId: value})
   }
 
+  getTrip(id) {
+    var that = this;
+    ajaxHandler.getItinerary(id, this.state.username, function(res) {
+      that.setState({suggestionList: res})
+    })
+  }
+
   render() {
     return (
       <MuiThemeProvider>
-        <Nav userName={this.state.userName} />
+        <Nav userName={this.state.userName} trips={this.state.trips} getTrip={this.getTrip} />
         <Route exect path='/explore' render={()=><Explore handleSearchDest={this.handleSearchDest} />} />
         <Route exect path='/trips' render={()=><Trips suggestionList={this.state.suggestionList} weather={this.state.weather} trip={this.state.trip} userId={this.state.userID} tripChange={this.tripChange} tripIdChange={this.tripIdChange} tripId={this.state.tripId} username={this.props.username} />} />
         <Route exect path='/suggestions' render={()=><Suggestions handleInputDest={this.handleInputDest} userName={this.state.userName} handleAddSuggestion={this.handleAddSuggestion} destinations={this.state.destinations}/>} />
