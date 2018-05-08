@@ -14,7 +14,6 @@ class Nav extends React.Component {
       open: false,
     }
     this.showTrips = this.showTrips.bind(this);
-    this.hideTrips = this.hideTrips.bind(this);
     this.getTrip = this.getTrip.bind(this);
   }
 
