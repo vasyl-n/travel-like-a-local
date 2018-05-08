@@ -19,10 +19,16 @@ class MapView extends React.Component {
       this.setState({
        center: nextProps.suggestionList[0].location 
       });
-      
     }
-}
+  }
 
+  componentWillMount() {
+    if ( this.props.suggestionList[0] ) {
+      this.setState({
+       center: this.props.suggestionList[0].location 
+      });
+    }
+  }
 
   
   render () {
