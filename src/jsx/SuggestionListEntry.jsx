@@ -17,9 +17,13 @@ class SuggestionListEntry extends React.Component {
     return (
       <li className="suggestion-list-entry">
         <Card>
+          <div></div>
           <CardTitle 
             title={`${this.props.suggestion.suggestionName}`} 
-            subtitle={`Suggested by ${this.props.suggestion.suggestionSource}`} />
+            subtitle={`Suggested by ${this.props.suggestion.suggestionSource}`} 
+            style={{background: 'aqua'}}
+            titleStyle={{fontSize: '22px'}}
+            />
           <CardText>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Donec mattis pretium massa.

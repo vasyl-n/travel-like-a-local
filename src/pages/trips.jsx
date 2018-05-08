@@ -41,7 +41,7 @@ class Trips extends React.Component {
       ajaxHandler.postItinerary( this.props.userId, this.state.textFieldValue, function(data){
         console.log(data)
         that.props.tripChange(data.data[0].planName)
-        that.props.tripIdChange(data.data[0].id)
+        that.props.tripIdChange(data.data[0].ID)
       })
     }
   }
@@ -78,14 +78,23 @@ class Trips extends React.Component {
   }
 
   addToTrip(name, link){
+    var that = this;
+    
     var username = this.props.username;
     var destination = this.props.suggestionList.length > 0 ? this.props.suggestionList[0].suggestionName : '';
     var suggestionName = name;
     var suggestionLink = link;
     console.log(username, destination, suggestionName, suggestionLink)
-    ajaxHandler.postNewSuggestion(username, destination, suggestionName, suggestionLink, function(res){
-      console.log(res)
+
+    ajaxHandler.handlePostDestination(destination, function(res){
+      ajaxHandler.postNewSuggestion(username, destination, suggestionName, suggestionLink, function(res){
+        console.log(res.data)
+        ajaxHandler.addSuggestionToItinerary(that.props.tripId, res.data[0].id, function(res){
+          console.log(res)
+        })
+      })
     })
+
   }
 
   render() {
