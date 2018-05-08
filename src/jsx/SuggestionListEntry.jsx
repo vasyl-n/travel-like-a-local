@@ -6,6 +6,11 @@ import FlatButton from 'material-ui/FlatButton';
 class SuggestionListEntry extends React.Component {
   constructor(props) {
     super(props);
+    this.onClickAdd = this.onClickAdd.bind(this);
+  }
+
+  onClickAdd(){
+    this.props.addToTrip(this.props.suggestion.suggestionName, this.props.suggestion.suggestionLink)
   }
 
   render() {
@@ -20,7 +25,9 @@ class SuggestionListEntry extends React.Component {
             Donec mattis pretium massa.
           </CardText>
           <CardActions>
-            <FlatButton label="Add to current trip" />
+            <FlatButton label="Add to current trip"
+              onClick={this.onClickAdd}
+            />
             <a 
               href={this.props.suggestion.suggestionLink} 
               target={this.props.suggestion.target}>

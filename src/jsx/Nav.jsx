@@ -9,7 +9,7 @@ var Nav = (props) => {
         </div>
         <div className="header-links">
         <Link to="/explore">Search</Link>
-        <Link to="/trips">Create a trip</Link>
+        <Link to="/trips">Trips</Link>
         <Link to="/suggestions">Suggestions</Link>
         <Link to="/friends">Friends</Link> 
         {/* <div className="login-signup"> */}

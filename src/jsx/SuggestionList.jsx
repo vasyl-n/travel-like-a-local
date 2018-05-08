@@ -11,16 +11,20 @@ class SuggestionList extends React.Component {
 
 
   render() {
-  
     return (
         <StyledSuggestionList>
           {
             this.props.suggestionList.map((suggestion) =>
-              <SuggestionListEntry
-                suggestion={suggestion}
-                key={suggestion.suggestionName}
+            {
+              if ( this.props.filter.google && suggestion.suggestionSource === 'Google'  ){
+                return <SuggestionListEntry
+                  suggestion={suggestion}
+                  key={suggestion.suggestionName}
+                  addToTrip={this.props.addToTrip}
                 />
-            )
+              } 
+
+            })
           }
         </StyledSuggestionList>
     )

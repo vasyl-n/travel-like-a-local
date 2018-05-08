@@ -157,7 +157,7 @@ input[type=submit]:hover {
   margin: 20px;
   border-radius: 5px;
   border: 1px solid #4CAF50;
-  flex: 1.7;
+  flex: 2;
 }
 .map-marker-element {
   display: inline;
