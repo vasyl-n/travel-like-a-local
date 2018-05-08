@@ -6,12 +6,25 @@ import App from '../src/jsx/App.jsx'
 
 configure({ adapter: new Adapter() });
 
-const wrapper = shallow(<App />);
+
 
 describe('<App />', () => {
   
-  it(' renders App without crashing', () => {
-    expect(2+2).toBe(4);
+  let app;
+  
+  beforeAll( async () => {
+    app = shallow(<App/>);
+  });
+  
+  
+  it('renders App without crashing', async () => {
+    await expect(2+2).toBe(4);
+  })
+  
+  it('renders nested Nav component', async () => {
+    await expect(app.find('Nav').length).toEqual(1)
   })
   
 })
+
+
