@@ -52,8 +52,6 @@ view [app architecture](https://github.com/BenevolentBactrians/travel-like-a-loc
 
 view [wireframes](https://github.com/BenevolentBactrians/travel-like-a-local/wiki/Wireframes)
 
-  -  If you encounter any problem please get in touch with one of the team members
-
 
 
 
