@@ -15,6 +15,7 @@ class Nav extends React.Component {
     }
     this.showTrips = this.showTrips.bind(this);
     this.getTrip = this.getTrip.bind(this);
+    this.handleRequestClose = this.handleRequestClose.bind(this)
   }
 
   handleRequestClose () {
