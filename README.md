@@ -5,7 +5,7 @@
 
   -  [Eric Chi](https://github.com/echi81)
   -  [Vasyl Nesterenko](https://github.com/vasyl-n)
-  -  [Michael Filis](https://github.com/mjraybk07)
+  -  [mjraybk07](https://github.com/mjraybk07)
 
 ## Requirements
 > MySQL, Express, Node, React
