@@ -1,4 +1,6 @@
 import React from 'react';
+import styled from 'styled-components'
+import TextField from 'material-ui/TextField';
 
 class DestinationInput extends React.Component {
   constructor(props) {
@@ -27,16 +29,21 @@ class DestinationInput extends React.Component {
 
   render() {
     return(
-      <div>
-        <form>
-          <label>
-            <input placeholder="Add Your City to our Database!" type="text" value={this.state.inputDest} onChange={this.handleDestInputChange}/>
-          </label>
-          <input type="submit" value="Submit" onClick={this.handleInputDestClick} />
-        </form>
-      </div>
+      <StyledDestinationInput>
+        <TextField
+          hintText="Add Your City to our Database!"
+          value={this.state.inputDest} onChange={this.handleDestInputChange}
+        />
+        {/* <input placeholder="Add Your City to our Database!" type="text" value={this.state.inputDest} onChange={this.handleDestInputChange}/> */}
+        <input type="submit" value="Submit" onClick={this.handleInputDestClick} />
+      </StyledDestinationInput>
     );
   }
 }
+
+const StyledDestinationInput = styled.div`
+  margin: 10px 0px;
+  margin-top: 25px;
+`
 
 export default DestinationInput;

@@ -1,9 +1,31 @@
 @import url("http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
 
+
+html {
+  height: 100%;
+}
+
 body {
-  margin: 0;
+  margin:0;
+  padding:0;
+  height:100%;
   font-family: "Helvetica", Arial, sans-serif;
   font-size: 16px;
+}
+
+#app {
+  min-height:100%;
+  position:relative;
+  height: 100%;
+}
+#footer {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:60px;   /* Height of the footer */
+  background:#6cf;
+  min-height: 65px;
+ 
 }
 
 .navbar {
@@ -79,15 +101,15 @@ body {
   font-size: 12px;
   color: #999;
 }
-form {
+/* form {
   margin: 0 auto;
   text-align: center;
 }
 form h1 {
   font-family: serif;
   color: #4a4a4a;
-}
-input[type=text], select {
+} */
+/* input[type=text], select {
     width: 34%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -114,12 +136,12 @@ input[type=submit] {
 
 input[type=submit]:hover {
     background-color: #45a049;
-}
+} */
 
-.hero-form .hero-input {
+/* .hero-form .hero-input {
   width: 60%;
-}
-
+} */
+/* 
 .form-wrapper {
   position: absolute;
   width: 500px;
@@ -134,17 +156,17 @@ input[type=submit]:hover {
 
 .form-wrapper input[type=text] {
   width: 60%;
-}
+} */
 
 
-.add-friend-btn, .comment-input {
+/* .add-friend-btn, .comment-input {
   display: block !important;
   margin: 0 auto !important;
-}
+} */
 
-.form-wrapper .comment-input {
-  width: 80% !important;
-}
+/* .form-wrapper .comment-input { */
+  /* width: 80% !important; */
+/* } */
 
 .add-friend-btn {
   width: 25% !important;
@@ -204,4 +226,78 @@ input[type=submit]:hover {
   color: #466bcb;
   text-align: center;
   font-size: 2.5rem;
+}
+
+
+#footer {
+  width: 100%;
+} 
+
+ #overlay img {
+  position: absolute; 
+  left: 10px;
+} 
+
+#footer {
+  min-height: 65px;
+  /* background-color: #d9d9d9; */
+  background: linear-gradient(166deg, #2699FB 65%, #1fc8db 86%, #2699FB 85%);
+  color: white;
+  opacity: 0.95;
+  display: flex;
+  align-items: center;
+} 
+/* #footer img {
+  float: right;
+}  */
+
+#team-info {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  font-family: monospace;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#team-info p {
+  font-family: 'Do Hyeon', sans-serif; 
+  font-size: 1.5em; 
+  letter-spacing: 3px; 
+  color: #1a1a1a;
+} 
+
+.vasyl {
+  padding: 0;
+} 
+
+a:hover {
+  color: #809fff;
+}
+
+
+.bactrians {
+  display: flex;
+  align-items: center;
+}
+
+.bactrians a {
+  padding: 0 2rem;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.bactrians a:hover {
+  color: aqua;
+}
+
+.bactrians img {
+  padding-left: 2rem;
+} 
+
+.members {
+  display: flex;
+  align-items: center;
 }

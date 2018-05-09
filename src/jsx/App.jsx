@@ -7,7 +7,7 @@ import Explore from '../pages/explore.jsx'
 import Trips from '../pages/trips.jsx'
 import Friends from '../pages/friends.jsx'
 import Suggestions from '../pages/suggestions.jsx'
-
+import Footer from './Footer.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,6 +20,7 @@ class App extends React.Component {
     this.tripChange = this.tripChange.bind(this);
     this.tripIdChange = this.tripIdChange.bind(this);
     this.getTrip = this.getTrip.bind(this);
+    this.updateTrips = this.updateTrips.bind(this);
     this.state = {
       userName: this.props.username,
       userID: '',
@@ -76,7 +77,7 @@ class App extends React.Component {
     }.bind(this));
 
     ajaxHandler.getItineraries(this.props.username, function(data){
-      console.log(data)
+      //console.log(data)
       this.setState({trips:data})
     }.bind(this));
 
@@ -140,7 +141,7 @@ class App extends React.Component {
       var that = this;
       ajaxHandler.getPlacesFromGoogleMaps(location, function (suggestions) {
         
-        console.log('suggestion results......', suggestions); // RAW RESULTS FROM GOOGLE
+        //console.log('suggestion results......', suggestions); // RAW RESULTS FROM GOOGLE
         
         for (var i = 0; i < suggestions.length; i++) {
           if (suggestions[i].photos !== undefined) {
@@ -168,7 +169,7 @@ class App extends React.Component {
   handleAddSuggestion(location, suggestionName, suggestionLink) {
     var userName = this.state.userName;
     ajaxHandler.postNewSuggestion(userName, location, suggestionName, suggestionLink, function (response) {
-      console.log(response);
+      //console.log(response);
     });
   }
 
@@ -201,23 +202,29 @@ class App extends React.Component {
     })
   }
 
+  updateTrips() {
+    console.log('here')
+    ajaxHandler.getItineraries(this.state.username, function(data){
+      this.setState({trips:data})
+    }.bind(this));
+  }
+
   render() {
+
     return (
+      
       <MuiThemeProvider>
+        <div>
         <Nav userName={this.state.userName} trips={this.state.trips} getTrip={this.getTrip} />
         <Route exect path='/explore' render={()=><Explore handleSearchDest={this.handleSearchDest} />} />
-        <Route exect path='/trips' render={()=><Trips suggestionList={this.state.suggestionList} weather={this.state.weather} trip={this.state.trip} userId={this.state.userID} tripChange={this.tripChange} tripIdChange={this.tripIdChange} tripId={this.state.tripId} username={this.props.username} />} />
-        <Route exect path='/suggestions' render={()=><Suggestions handleInputDest={this.handleInputDest} userName={this.state.userName} handleAddSuggestion={this.handleAddSuggestion} destinations={this.state.destinations}/>} />
+        <Route exect path='/trips' render={()=><Trips suggestionList={this.state.suggestionList} weather={this.state.weather} trip={this.state.trip} userId={this.state.userID} tripChange={this.tripChange} tripIdChange={this.tripIdChange} tripId={this.state.tripId} username={this.props.username} updateTrips={this.updateTrips} />} />
+        <Route exect path='/suggestions' render={()=><Suggestions handleInputDest={this.handleInputDest} userName={this.state.userName} handleAddSuggestion={this.handleAddSuggestion} destinations={this.state.destinations} userId={this.state.userID} />} />
         <Route exect path='/friends' render={()=><Friends userName={this.state.userName} friendsToAdd={this.state.friendsToAdd} handleAddFriend={this.handleAddFriend} userID={this.state.userID} friendList={this.state.friendList} handleFriendDelete={this.handleFriendDelete} /> } />
         {location.pathname === '/' && <Redirect to='/explore' /> }
         {location.pathname === '/login' && <Redirect to='/explore' /> }
-
-        
-        {this.state.userName !== 'not logged in' &&
-          <div>
-            
-          </div>
-        }
+        {location.pathname === '/signup' && <Redirect to='/explore' /> }
+        </div>
+        <Footer />
       </MuiThemeProvider>
     );
   }
