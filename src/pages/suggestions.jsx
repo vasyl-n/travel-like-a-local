@@ -28,6 +28,7 @@ class Suggestions extends React.Component {
 
     return(
       <StyledSuggestions>
+ 
         <StyledSuggestionsList>
           { this.state.suggestions &&
             this.state.suggestions.map((suggestion, ind) => {
@@ -71,20 +72,25 @@ const StyledSuggestions = styled.div`
 const AddSuggestionForm = styled.div`
   display: flex; 
   flex-direction: column;
-  padding: 0 3rem;
-  flex: 0.8;
+  padding: 0 5rem;
+  flex: 0.7;
 `
 
 const StyledH3 = styled.h3`
-
+  text-align: center;
 `
 
 const StyledSuggestionsList = styled.ul`
 list-style: none;
-flex: 1;
 overflow-y: scroll;
-height: 63vh;
 flex: 1;
+height: 74vh;
+`
+
+const ListWrap = styled.div`
+flex: 1;
+height: 74vh;
+overflow-y: scroll;
 `
 
 
