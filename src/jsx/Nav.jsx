@@ -44,7 +44,7 @@ class Nav extends React.Component {
           </div>
           <div className="header-links">
           <Link to="/explore">Search</Link>
-          <a onMouseEnter={this.showTrips} >Trips</a>
+          <a onClick={this.showTrips} >Trips</a>
            {/* <Dropdown trips={this.props.trips} /> */}
           {/* {this.props.trips && } */}
            <Popover

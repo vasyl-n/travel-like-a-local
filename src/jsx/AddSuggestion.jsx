@@ -1,4 +1,6 @@
 import React from 'react';
+import styled from 'styled-components'
+import TextField from 'material-ui/TextField';
 
 class AddSuggestion extends React.Component {
   constructor(props) {
@@ -35,20 +37,44 @@ class AddSuggestion extends React.Component {
   }
 
   render() {
-    //console.log('line 27', this.props);
     return (
-      <div>
-        <form onSubmit={this.handleSuggestionSubmit}>
+        <StyledAddSuggestionForm onSubmit={this.handleSuggestionSubmit} >
+        {/* <form > */}
           <select onChange={this.destinationOptionChange} value={this.state.destinationOption}>
             {this.props.destinations.map((destination) => <option value={destination.destinationName} key={destination.destinationName}>{destination.destinationName}</option>)}
           </select>
-          <input className="comment-input" placeholder="Add Your Comment To Selected Destination" type="text" value={this.state.suggestionName} onChange={this.handleSugNameInputChange} required />
-          <input placeholder="Add Your Link" type="text" value={this.state.suggestionLink} onChange={this.handleSugLinkInputChange} required />
+          <TextField
+            hintText="Add Your Comment" 
+            value={this.state.suggestionName} 
+            onChange={this.handleSugNameInputChange}
+          />
+          
+          {/* <input className="comment-input" placeholder="Add Your Comment To Selected Destination" type="text" value={this.state.suggestionName} onChange={this.handleSugNameInputChange} required /> */}
+          <TextField
+            hintText='Add Your Link'
+            value={this.state.suggestionLink} onChange={this.handleSugLinkInputChange}
+          />
+          
+          {/* <input placeholder="Add Your Link" type="text" value={this.state.suggestionLink} onChange={this.handleSugLinkInputChange} required /> */}
           <input type="submit" value="Submit" />
-        </form>
-      </div>
+        {/* </form> */}
+        </StyledAddSuggestionForm>
     );
   }
 }
+
+const StyledAddSuggestionForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  select {
+    margin: 10px 0px;
+  }
+  input {
+    margin: 10px 0px;
+  }
+`
+
+
+
 
 export default AddSuggestion;

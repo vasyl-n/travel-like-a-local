@@ -7,7 +7,7 @@ import Explore from '../pages/explore.jsx'
 import Trips from '../pages/trips.jsx'
 import Friends from '../pages/friends.jsx'
 import Suggestions from '../pages/suggestions.jsx'
-
+import Footer from './Footer.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -218,18 +218,13 @@ class App extends React.Component {
         <Nav userName={this.state.userName} trips={this.state.trips} getTrip={this.getTrip} />
         <Route exect path='/explore' render={()=><Explore handleSearchDest={this.handleSearchDest} />} />
         <Route exect path='/trips' render={()=><Trips suggestionList={this.state.suggestionList} weather={this.state.weather} trip={this.state.trip} userId={this.state.userID} tripChange={this.tripChange} tripIdChange={this.tripIdChange} tripId={this.state.tripId} username={this.props.username} updateTrips={this.updateTrips} />} />
-        <Route exect path='/suggestions' render={()=><Suggestions handleInputDest={this.handleInputDest} userName={this.state.userName} handleAddSuggestion={this.handleAddSuggestion} destinations={this.state.destinations}/>} />
+        <Route exect path='/suggestions' render={()=><Suggestions handleInputDest={this.handleInputDest} userName={this.state.userName} handleAddSuggestion={this.handleAddSuggestion} destinations={this.state.destinations} userId={this.state.userID} />} />
         <Route exect path='/friends' render={()=><Friends userName={this.state.userName} friendsToAdd={this.state.friendsToAdd} handleAddFriend={this.handleAddFriend} userID={this.state.userID} friendList={this.state.friendList} handleFriendDelete={this.handleFriendDelete} /> } />
         {location.pathname === '/' && <Redirect to='/explore' /> }
         {location.pathname === '/login' && <Redirect to='/explore' /> }
         {location.pathname === '/signup' && <Redirect to='/explore' /> }
-        
-        {this.state.userName !== 'not logged in' &&
-          <div>
-            
-          </div>
-        }
         </div>
+        <Footer />
       </MuiThemeProvider>
     );
   }

@@ -99,7 +99,6 @@ class Trips extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     return(
       <div className="trips">
         {this.props.suggestionList.length !== 0 && 
