@@ -39,15 +39,12 @@ class AddSuggestion extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSuggestionSubmit}>
-          <hr />
           <select onChange={this.destinationOptionChange} value={this.state.destinationOption}>
             {this.props.destinations.map((destination) => <option value={destination.destinationName} key={destination.destinationName}>{destination.destinationName}</option>)}
           </select>
           <input className="comment-input" placeholder="Add Your Comment To Selected Destination" type="text" value={this.state.suggestionName} onChange={this.handleSugNameInputChange} required />
-          <hr />
           <input placeholder="Add Your Link" type="text" value={this.state.suggestionLink} onChange={this.handleSugLinkInputChange} required />
           <input type="submit" value="Submit" />
-          <hr />
         </form>
       </div>
     );

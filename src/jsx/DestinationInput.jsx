@@ -28,12 +28,12 @@ class DestinationInput extends React.Component {
   render() {
     return(
       <div>
-        <form>
-          <label>
-            <input placeholder="Add Your City to our Database!" type="text" value={this.state.inputDest} onChange={this.handleDestInputChange}/>
-          </label>
+        {/* <form> */}
+          {/* <label> */}
+          <input placeholder="Add Your City to our Database!" type="text" value={this.state.inputDest} onChange={this.handleDestInputChange}/>
+          {/* </label> */}
           <input type="submit" value="Submit" onClick={this.handleInputDestClick} />
-        </form>
+        {/* </form> */}
       </div>
     );
   }
