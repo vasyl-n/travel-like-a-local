@@ -17,7 +17,7 @@ class Nav extends React.Component {
     this.getTrip = this.getTrip.bind(this);
   }
 
-  handleRequestClose = () => {
+  handleRequestClose () {
     this.setState({
       open: false,
     });
@@ -59,7 +59,7 @@ class Nav extends React.Component {
               this.props.trips.length > 0 &&
               this.props.trips.map((el, ind) => {
 
-                return <Link to="/trips"><MenuItem primaryText={el.name} onClick={this.getTrip} /></Link>
+                return <Link to="/trips" key={ind}><MenuItem primaryText={el.name} onClick={this.getTrip} /></Link>
 
               })
             }
