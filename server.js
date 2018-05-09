@@ -83,6 +83,7 @@ apiRouter.get('/friendlist/:username', utilities.getFriendListForUser);
 apiRouter.get('/googlemaps/:location', utilities.getPlacesFromGoogleMapsProxy);
 //path to show suggestions from your friends for the destination you searched for
 apiRouter.get('/suggestions/:location/:username', utilities.getSuggestionsFromFriends);
+apiRouter.get('/userSuggestions/:userId', utilities.getSuggestionsForUser)
 //path to show all destinations
 apiRouter.get('/destinations', utilities.getDestinations);
 apiRouter.post('/users/:username', utilities.getLoggedUserId);

@@ -24,7 +24,7 @@ class Nav extends React.Component {
   };
 
 
-  showTrips() {
+  showTrips(event) {
     event.preventDefault();
     this.setState({
       open: true,
@@ -44,13 +44,13 @@ class Nav extends React.Component {
           </div>
           <div className="header-links">
           <Link to="/explore">Search</Link>
-          <a onMouseEnter={this.showTrips} >Trips</a>
+          <a onClick={this.showTrips} >Trips</a>
            {/* <Dropdown trips={this.props.trips} /> */}
           {/* {this.props.trips && } */}
            <Popover
               open={this.state.open}
               anchorEl={this.state.anchorEl}
-              anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+              anchorOrigin={{horizontal: 'middle', vertical: 'top'}}
               targetOrigin={{horizontal: 'middle', vertical: 'bottom'}}
               onRequestClose={this.handleRequestClose}
               >
