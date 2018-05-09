@@ -214,7 +214,7 @@ class App extends React.Component {
     return (
       
       <MuiThemeProvider>
-        <div>
+        <div data-testid-user={this.state.userName}>
         <Nav userName={this.state.userName} trips={this.state.trips} getTrip={this.getTrip} />
         <Route exect path='/explore' render={()=><Explore handleSearchDest={this.handleSearchDest} />} />
         <Route exect path='/trips' render={()=><Trips suggestionList={this.state.suggestionList} weather={this.state.weather} trip={this.state.trip} userId={this.state.userID} tripChange={this.tripChange} tripIdChange={this.tripIdChange} tripId={this.state.tripId} username={this.props.username} updateTrips={this.updateTrips} />} />

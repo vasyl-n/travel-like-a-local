@@ -10,12 +10,7 @@ configure({ adapter: new Adapter() });
 
 describe('<App />', () => {
   
-  let app;
-  
-  beforeAll( async () => {
-    app = shallow(<App/>);
-  });
-  
+  const app = shallow(<App username= {"z@z.com"} />);;
   
   it('renders App without crashing', async () => {
     await expect(2+2).toBe(4);

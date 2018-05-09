@@ -26,13 +26,11 @@ class Trips extends React.Component {
     this.toggleGoogle = this.toggleGoogle.bind(this);
     this.toggleTripOn = this.toggleTripOn.bind(this);
     this.addToTrip = this.addToTrip.bind(this);
+    this.handleRequestClose = this.handleRequestClose.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  styles = {
-    toggle: {
-      marginBottom: 16,
-    }
-  }
+
 
   handleSubmit(e) {
     console.log(e.key)
@@ -42,7 +40,6 @@ class Trips extends React.Component {
         console.log(data)
         that.props.tripChange(data.data[0].planName)
         that.props.tripIdChange(data.data[0].ID)
-        that.props.updateTrips();
       })
     }
   }
@@ -51,7 +48,7 @@ class Trips extends React.Component {
     this.setState({textFieldValue: e.target.value})
   }
 
-  handleClick = (event) => {
+  handleClick (event) {
     // This prevents ghost click.
     event.preventDefault();
     this.setState({
@@ -60,7 +57,7 @@ class Trips extends React.Component {
     });
   };
 
-  handleRequestClose = () => {
+  handleRequestClose () {
     this.setState({
       open: false,
     });
@@ -99,6 +96,13 @@ class Trips extends React.Component {
   }
 
   render() {
+    const  styles = {
+    toggle: {
+      marginBottom: 16,
+    }
+  }
+    
+    
     return(
       <div className="trips">
         {this.props.suggestionList.length !== 0 && 
@@ -125,27 +129,27 @@ class Trips extends React.Component {
               <Popover
                 open={this.state.open}
                 anchorEl={this.state.anchorEl}
-                anchorOrigin= {{"horizontal":"left","vertical":"bottom"}}
-                targetOrigin={{"horizontal":"right","vertical":"top"}}
+                anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+                targetOrigin={{horizontal: 'middle', vertical: 'bottom'}}
                 onRequestClose={this.handleRequestClose}
               >
-                <Menu style={{margin: '10px'}} >
+                <Menu>
                   <Toggle
                     label="Friends"
                     defaultToggled={true}
-                    style={this.styles.toggle}
+                    style={styles.toggle}
                     onToggle={this.toggleFriends}
                   />
                   <Toggle
                     label="Google"
                     defaultToggled={true}
-                    style={this.styles.toggle}
+                    style={styles.toggle}
                     onToggle={this.toggleGoogle}
                   />
                   <Toggle
                     label="Current trip"
                     defaultToggled={true}
-                    style={this.styles.toggle}
+                    style={styles.toggle}
                     onToggle={this.toggleTripOn}
                   />
                 </Menu>
@@ -177,8 +181,6 @@ const Top = styled.div`
   display:flex;
   align-items: center;
   height: 53px;
-  justify-content: space-between;
-  margin: 0 3rem;
 `
 
 export default Trips;
