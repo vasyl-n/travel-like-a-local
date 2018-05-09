@@ -181,6 +181,8 @@ const Top = styled.div`
   display:flex;
   align-items: center;
   height: 53px;
+  justify-content: space-between;
+  margin: 0 3rem;
 `
 
 export default Trips;
