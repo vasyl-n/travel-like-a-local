@@ -34,11 +34,15 @@
 
 -  from seperate terminals
   ```sh
-  Run webpack --watch
+npm run build (to start webpack)
   ```
 
   ```sh
-  nodemon server.js
+ npm run start (to start server)
+  ```
+  
+  ```sh
+  npm run debug (to run tests)
   ```
 
   -  Open localhost:3000
