@@ -214,6 +214,7 @@ class App extends React.Component {
     return (
       
       <MuiThemeProvider>
+      <div>
         <div data-testid-user={this.state.userName}>
         <Nav userName={this.state.userName} trips={this.state.trips} getTrip={this.getTrip} />
         <Route exect path='/explore' render={()=><Explore handleSearchDest={this.handleSearchDest} />} />
@@ -225,6 +226,7 @@ class App extends React.Component {
         {location.pathname === '/signup' && <Redirect to='/explore' /> }
         </div>
         <Footer />
+        </div>
       </MuiThemeProvider>
     );
   }
