@@ -126,11 +126,11 @@ class Trips extends React.Component {
               <Popover
                 open={this.state.open}
                 anchorEl={this.state.anchorEl}
-                anchorOrigin={{horizontal: 'left', vertical: 'top'}}
-                targetOrigin={{horizontal: 'middle', vertical: 'bottom'}}
+                anchorOrigin= {{"horizontal":"left","vertical":"bottom"}}
+                targetOrigin={{"horizontal":"right","vertical":"top"}}
                 onRequestClose={this.handleRequestClose}
               >
-                <Menu>
+                <Menu style={{margin: '10px'}} >
                   <Toggle
                     label="Friends"
                     defaultToggled={true}

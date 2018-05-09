@@ -35,7 +35,7 @@ class MapView extends React.Component {
     
     return (
 
-      <div className='google-map' style={{ height: '500px', width: '500px' }}>
+      <div className='google-map' style={{ height: '63vh' }}>
         <GoogleMapReact
           center={ this.state.center }
           zoom={ this.state.zoom }

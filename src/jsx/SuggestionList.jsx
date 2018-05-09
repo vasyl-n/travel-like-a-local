@@ -34,6 +34,8 @@ class SuggestionList extends React.Component {
 const StyledSuggestionList = styled.ul`
   list-style: none;
   flex: 1;
+  overflow-y: scroll;
+  height: 63vh;
 `
 
 export default SuggestionList;

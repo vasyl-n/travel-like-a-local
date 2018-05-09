@@ -50,7 +50,7 @@ class Nav extends React.Component {
            <Popover
               open={this.state.open}
               anchorEl={this.state.anchorEl}
-              anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+              anchorOrigin={{horizontal: 'middle', vertical: 'top'}}
               targetOrigin={{horizontal: 'middle', vertical: 'bottom'}}
               onRequestClose={this.handleRequestClose}
               >
