@@ -32,7 +32,15 @@
   mysql -u "username" -p< Schema.sql
   ```
 
-  -  Run webpack --watch and on a separate terminal nodemon server.js
+-  from seperate terminals
+  ```sh
+  Run webpack --watch
+  ```
+
+  ```sh
+  nodemon server.js
+  ```
+
   -  Open localhost:3000
   -  Please make sure to provide your own google api keys for google maps in file lib/util.js as our key will probably expire after some calls to the google maps API
 
