@@ -76,7 +76,7 @@ class App extends React.Component {
     }.bind(this));
 
     ajaxHandler.getItineraries(this.props.username, function(data){
-      console.log(data)
+      //console.log(data)
       this.setState({trips:data})
     }.bind(this));
 
@@ -204,7 +204,9 @@ class App extends React.Component {
   render() {
 
     return (
+      
       <MuiThemeProvider>
+        <div>
         <Nav userName={this.state.userName} trips={this.state.trips} getTrip={this.getTrip} />
         <Route exect path='/explore' render={()=><Explore handleSearchDest={this.handleSearchDest} />} />
         <Route exect path='/trips' render={()=><Trips suggestionList={this.state.suggestionList} weather={this.state.weather} trip={this.state.trip} userId={this.state.userID} tripChange={this.tripChange} tripIdChange={this.tripIdChange} tripId={this.state.tripId} username={this.props.username} />} />
@@ -219,6 +221,7 @@ class App extends React.Component {
             
           </div>
         }
+        </div>
       </MuiThemeProvider>
     );
   }
