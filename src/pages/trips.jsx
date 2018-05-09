@@ -42,6 +42,7 @@ class Trips extends React.Component {
         console.log(data)
         that.props.tripChange(data.data[0].planName)
         that.props.tripIdChange(data.data[0].ID)
+        that.props.updateTrips();
       })
     }
   }
@@ -177,6 +178,8 @@ const Top = styled.div`
   display:flex;
   align-items: center;
   height: 53px;
+  justify-content: space-between;
+  margin: 0 3rem;
 `
 
 export default Trips;
