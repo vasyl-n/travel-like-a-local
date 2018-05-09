@@ -40,5 +40,8 @@ bower_components/
 .floo
 .flooignore
 
-
+# Apple OS files
 public/.DS_Store
+
+# Testing coverage reports
+coverage/

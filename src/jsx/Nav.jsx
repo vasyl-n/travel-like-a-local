@@ -17,7 +17,7 @@ class Nav extends React.Component {
     this.getTrip = this.getTrip.bind(this);
   }
 
-  handleRequestClose = () => {
+  handleRequestClose () {
     this.setState({
       open: false,
     });
@@ -38,9 +38,9 @@ class Nav extends React.Component {
 
   render() {
     return (
-      <nav className="navbar">
+      <nav className="navbar" data-testid="navbar">
           <div className="logo">
-            <h3 className="tlal">Travel Like a Local</h3>
+            <h3 data-testid="navbar h3" className="tlal">Travel Like a Local</h3>
           </div>
           <div className="header-links">
           <Link to="/explore">Search</Link>
@@ -59,7 +59,7 @@ class Nav extends React.Component {
               this.props.trips.length > 0 &&
               this.props.trips.map((el, ind) => {
 
-                return <Link to="/trips"><MenuItem primaryText={el.name} onClick={this.getTrip} /></Link>
+                return <Link to="/trips" key={ind}><MenuItem primaryText={el.name} onClick={this.getTrip} /></Link>
 
               })
             }
@@ -70,13 +70,16 @@ class Nav extends React.Component {
           {/* <div className="login-signup"> */}
             {/* {props.userName !== 'not logged in' && <span>Hello {props.userName}!     </span>} */}
             
-            {this.props.userName !== 'not logged in' && <a className="logout-button" href="logout" onClick={()=>localStorage.clear()}>Logout</a>}
-            {this.props.userName === 'not logged in' && <a href="signup">SignUp</a>}
-            {this.props.userName === 'not logged in' && <a href="login">Login</a>}
+            {this.props.userName !== 'not logged in' && <a data-testid="logout" className="logout-button" href="logout" onClick={()=>localStorage.clear()}>Logout</a>}
+            {this.props.userName === 'not logged in' && <a  data-testid="signup" href="signup">SignUp</a>}
+            {this.props.userName === 'not logged in' && <a  data-testid="login" href="login">Login</a>}
+
         </div>
+
       </nav>
     );
   }
+
 };
 
 export default Nav;

@@ -76,7 +76,7 @@ class App extends React.Component {
     }.bind(this));
 
     ajaxHandler.getItineraries(this.props.username, function(data){
-      console.log(data)
+      //console.log(data)
       this.setState({trips:data})
     }.bind(this));
 
@@ -140,7 +140,7 @@ class App extends React.Component {
       var that = this;
       ajaxHandler.getPlacesFromGoogleMaps(location, function (suggestions) {
         
-        console.log('suggestion results......', suggestions); // RAW RESULTS FROM GOOGLE
+        //console.log('suggestion results......', suggestions); // RAW RESULTS FROM GOOGLE
         
         for (var i = 0; i < suggestions.length; i++) {
           if (suggestions[i].photos !== undefined) {
@@ -168,7 +168,7 @@ class App extends React.Component {
   handleAddSuggestion(location, suggestionName, suggestionLink) {
     var userName = this.state.userName;
     ajaxHandler.postNewSuggestion(userName, location, suggestionName, suggestionLink, function (response) {
-      console.log(response);
+      //console.log(response);
     });
   }
 
@@ -202,8 +202,11 @@ class App extends React.Component {
   }
 
   render() {
+
     return (
+      
       <MuiThemeProvider>
+        <div>
         <Nav userName={this.state.userName} trips={this.state.trips} getTrip={this.getTrip} />
         <Route exect path='/explore' render={()=><Explore handleSearchDest={this.handleSearchDest} />} />
         <Route exect path='/trips' render={()=><Trips suggestionList={this.state.suggestionList} weather={this.state.weather} trip={this.state.trip} userId={this.state.userID} tripChange={this.tripChange} tripIdChange={this.tripIdChange} tripId={this.state.tripId} username={this.props.username} />} />
@@ -218,6 +221,7 @@ class App extends React.Component {
             
           </div>
         }
+        </div>
       </MuiThemeProvider>
     );
   }
