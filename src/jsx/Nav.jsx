@@ -24,7 +24,7 @@ class Nav extends React.Component {
   };
 
 
-  showTrips() {
+  showTrips(event) {
     event.preventDefault();
     this.setState({
       open: true,
