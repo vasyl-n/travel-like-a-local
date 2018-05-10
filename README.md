@@ -50,12 +50,13 @@ npm run build (to start webpack)
 
 ### Documents
 
-view [app architecture](https://github.com/BenevolentBactrians/travel-like-a-local/wiki/App-Architecture)
+
+![alt text](https://github.com/BenevolentBactrians/travel-like-a-local/blob/master/documents/application%20architecture.png)
+
+![alt text](https://github.com/BenevolentBactrians/travel-like-a-local/blob/master/documents/Database%20Relationship%20Diagram.png)
 
 ## Wireframes
 
 view [wireframes](https://github.com/BenevolentBactrians/travel-like-a-local/wiki/Wireframes)
-
-
 
 
