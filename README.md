@@ -1,6 +1,7 @@
 # travel-like-a-local :dromedary_camel: :camel: :dromedary_camel: :dromedary_camel: :camel: :dromedary_camel:
 > An appplication that allows you to display suggestions from friends when you want to make a trip to a selected destination.
 
+
 ![screenshot](https://github.com/BenevolentBactrians/travel-like-a-local/blob/master/screencaptures/explore_full.jpeg)
 
 
