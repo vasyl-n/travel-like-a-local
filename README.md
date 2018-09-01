@@ -4,6 +4,8 @@
 
 ![screenshot](https://github.com/BenevolentBactrians/travel-like-a-local/blob/master/screencaptures/explore_full.jpeg)
 
+![screenshot](https://github.com/BenevolentBactrians/travel-like-a-local/blob/master/screencaptures/trips_full.jpeg)
+
 
 ## Team
 
