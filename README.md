@@ -1,5 +1,11 @@
-# travel-like-a-local
-> An appplication that allows you to display suggestions from firends when you want to make a trip to a selected destination.
+# travel-like-a-local :dromedary_camel: :camel: :dromedary_camel: :dromedary_camel: 
+> An appplication that allows you to display suggestions from friends when you want to make a trip to a selected destination.
+
+
+![screenshot](https://github.com/BenevolentBactrians/travel-like-a-local/blob/master/screencaptures/explore_full.jpeg)
+
+![screenshot](https://github.com/BenevolentBactrians/travel-like-a-local/blob/master/screencaptures/trips_full.jpeg)
+
 
 ## Team
 
@@ -50,12 +56,13 @@ npm run build (to start webpack)
 
 ### Documents
 
-view [app architecture](https://github.com/BenevolentBactrians/travel-like-a-local/wiki/App-Architecture)
+
+![alt text](https://github.com/BenevolentBactrians/travel-like-a-local/blob/master/documents/application%20architecture.png)
+
+![alt text](https://github.com/BenevolentBactrians/travel-like-a-local/blob/master/documents/Database%20Relationship%20Diagram.png)
 
 ## Wireframes
 
 view [wireframes](https://github.com/BenevolentBactrians/travel-like-a-local/wiki/Wireframes)
-
-
 
 
